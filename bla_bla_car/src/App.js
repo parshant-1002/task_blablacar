@@ -1,16 +1,19 @@
-
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
+import PublicRoutes from './Route/PublicRoutes';
 import Navbar from './View/Navbar.js/index.js';
-import Test from './View/Register/Test';
 
 function App() {
   return (
     <div className="App">
-      <Navbar/>
-      <div>
+      <BrowserRouter>
+      <Navbar />
+      <div className='main'>
+       <PublicRoutes>
 
-    <Test/>
+       </PublicRoutes>
       </div>
+      </BrowserRouter>
     </div>
   );
 }

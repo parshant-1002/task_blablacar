@@ -1,0 +1,39 @@
+
+.section-data {
+    position: relative;
+    box-sizing: border-box;
+    padding: 8px 24px;
+}
+
+.emailInput {
+    padding-right: 0px;
+    font-family: inherit;
+    margin-right: 48px;
+
+    appearance: none;
+    border: 0px;
+    border-radius: 16px;
+    background-color: transparent;
+    color: rgb(5, 70, 82);
+    flex: 1 1 0%;
+    font: 400 18px / 20px gt-eesti, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    width: 100%;
+    caret-color: rgb(0, 175, 245);
+    padding: 0px 16px;
+    height: 56px;
+
+}
+.email {
+    height: 56px;
+    position: relative;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    box-sizing: border-box;
+    color: rgb(5, 70, 82);
+    background-color: rgb(237, 237, 237);
+    border-radius: 16px;
+    box-shadow: transparent 0px 0px 0px 3px;
+    transition: box-shadow 200ms ease-out 0s;
+    white-space: pre-line;
+}
