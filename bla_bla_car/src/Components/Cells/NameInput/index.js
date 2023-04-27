@@ -4,6 +4,7 @@ import CustomInput from '../../Atoms/CustomInput'
 import ContinueButton from '../../Atoms/ContinueButton'
 import "./styles.css"
 import { useNavigate } from 'react-router-dom'
+import { STRINGS } from '../../../Shared/Constants'
 export default function NameInput() {
     const [firstName, setFirstName] = useState()
     const [lastName, setLastName] = useState()
@@ -11,7 +12,7 @@ export default function NameInput() {
     const handleSubmit = () => { navigate("/register/birthDate")}
   return (
     <>
-    <Header heading={"What is your name?"} />
+    <Header heading={STRINGS?.NAME_HEADING} />
   <div className='section'>
       <CustomInput state={firstName} setState={setFirstName} placeHolder="firstName" />
       <CustomInput state={lastName} setState={setLastName} placeHolder="lastName"/>

@@ -9,6 +9,7 @@ import NamePrefixSelector from '../../Components/Cells/NamePrefixSelector'
 import PasswordInput from '../../Components/Cells/PasswordInput'
 import PhoneVerification from '../../Components/Cells/PhoneVerification'
 import Home from '../../View/Home'
+import Search from '../../Components/Molecules/Search'
 
 export default function PublicRoutes() {
     return (
@@ -23,6 +24,7 @@ export default function PublicRoutes() {
                 <Route exact path="/register/gender" element={<NamePrefixSelector/>}/>
                 <Route exact path="/register/password" element={<PasswordInput/>}/>
                 <Route exaxt path={"/phone/fill"} element={<PhoneVerification/>}/>
+                <Route exaxt path={"/search-car-sharing"} element={<Search/>}/>
             </Routes>
      
     )
