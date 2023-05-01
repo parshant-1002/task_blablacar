@@ -52,5 +52,26 @@
     white-space: pre-line;
     background: rgb(253, 216, 222);
 }
+.react-datepicker__input-container {
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+}
 
+.singup-date-picker {
+    border: none;
+    display: block;
+    margin-left: 10px;
+    background: none;
+    font-size: 1.3rem;
+    outline: none;
+    color: rgb(5, 70, 82);
+}
 
+.singup-date-picker-wrapper {
+    width: 100%;
+}
+.singup-date-picker-wrapper  .react-datepicker__calendar-icon {
+    right: 0px;
+    left: unset;
+}

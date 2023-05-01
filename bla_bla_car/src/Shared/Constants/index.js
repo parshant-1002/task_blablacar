@@ -5,5 +5,34 @@ export const STRINGS={
     GENDER_SELECT_HEADING:"How would you like to be addressed?",
     PASSWORD_HEADING:"Define your password",
     MOBILE_VERIFICATION_HEADING:"Verify your mobile number",
-    SEARCH_HEADING:"Find a ride"
+    SEARCH_HEADING:"Find a ride",
+    LOGIN_INPUT_HEADING:"What's your email and password?"
+}
+
+
+export const REGEX={
+    email:"^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$",
+    name: "[a-zA-Z][a-zA-Z]+",
+    password:"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})"
+}
+
+export const VALIDATION_MESSAGES={
+    EMAIL:{
+        NOT_VALID:"Enter Valid Email",
+        EMPTY:"*Email Required"
+    },
+    FIRST_NAME:{
+        NOT_VALID:"Enter Valid First Name",
+        EMPTY:"*FirstName Required"
+    },
+    LAST_NAME:{
+        NOT_VALID:"Enter Valid Last Name",
+        EMPTY:"*LastName Required"
+    },
+    PASSWORD:{
+        NOT_VALID:"Enter Valid Password",
+        EMPTY:"*Password Required",
+      
+    }
+
 }

@@ -2,8 +2,10 @@ import { BrowserRouter, useLocation } from 'react-router-dom';
 import './App.css';
 import PublicRoutes from './Route/PublicRoutes';
 import Navbar from './View/Navbar.js/index.js';
+import { useSelector } from 'react-redux';
 
 function App() {
+  console.log(useSelector(state=>state))
   return (
     <div className="App">
       <BrowserRouter>

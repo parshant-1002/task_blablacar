@@ -10,6 +10,7 @@ import PasswordInput from '../../Components/Cells/PasswordInput'
 import PhoneVerification from '../../Components/Cells/PhoneVerification'
 import Home from '../../View/Home'
 import Search from '../../Components/Molecules/Search'
+import LoginInputs from '../../Components/Cells/LoginInputs'
 
 export default function PublicRoutes() {
     return (
@@ -25,6 +26,7 @@ export default function PublicRoutes() {
                 <Route exact path="/register/password" element={<PasswordInput/>}/>
                 <Route exaxt path={"/phone/fill"} element={<PhoneVerification/>}/>
                 <Route exaxt path={"/search-car-sharing"} element={<Search/>}/>
+                <Route exaxt path={"/login/email"} element={<LoginInputs/>}/>
             </Routes>
      
     )

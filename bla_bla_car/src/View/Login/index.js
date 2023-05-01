@@ -10,7 +10,7 @@ export default function Login() {
 
       <li className="linksList">
 
-        <Link className="linkToEmailInput" to={"email"}><span className="linkText">
+        <Link className="linkToEmailInput" to={"/login/email"}><span className="linkText">
           Continue with email
         </span>
           <span className="linkIcon">

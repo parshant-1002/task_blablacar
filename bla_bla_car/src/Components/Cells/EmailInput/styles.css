@@ -3,3 +3,6 @@
     margin-right: auto;
     max-width: 662px;
 }
+.validationMessage{
+    color: red;
+}

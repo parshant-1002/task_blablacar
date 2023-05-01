@@ -7,9 +7,11 @@ import NavContent from './NavContent'
 export default function Navbar() {
     const navigate = useNavigate()
     const currentPath = useLocation()
+    const token=localStorage.getItem("token")
     const [dropDownIconPosition, setDropDownIconPosition] = useState("dropDownIconDown")
     const [dropDownListShow, setDropDownListShow] = useState(false)
-    const dropDownListData = [{ linkText: "Log in ", route: "/login" }, { linkText: "Sign up", route: "/register" }]
+    const dropDownListDataForGuest = [{ linkText: "Log in ", route: "/login" }, { linkText: "Sign up", route: "/register" }]
+    const dropDownListDataForUser = [{ linkText: "Your Rides", route: "/rides" }, { linkText: "Inbox", route: "/messages/list" },{ linkText: "Profile", route: "/dashboard/profile/menu" },{ linkText: "Logout", route: "/" }]
     const handleDropDownIconPosition = () => {
         if (dropDownIconPosition === "dropDownIconDown") {
             setDropDownIconPosition("dropDownIconUp")
@@ -30,7 +32,7 @@ export default function Navbar() {
                 </div>
                 <div className='centerContent'></div>
                 {!currentPath?.pathname?.includes("register") &&<NavContent handleDropDownIconPosition={handleDropDownIconPosition} dropDownIconPosition={dropDownIconPosition}/>}
-                {dropDownListShow && <DropDownListViewer dropDownListData={dropDownListData} setDropDownListShow={setDropDownListShow} setDropDownIconPosition={setDropDownIconPosition} />}
+                {dropDownListShow && <DropDownListViewer dropDownListData={!token?dropDownListDataForGuest:dropDownListDataForUser} setDropDownListShow={setDropDownListShow} setDropDownIconPosition={setDropDownIconPosition} />}
             </div>
         </div>
     )
