@@ -4,4 +4,10 @@
     font: 500 40px / 42px gt-eesti, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: bolder;
     margin-top: 10%;
+    width:50%
+}
+.headingDiv{
+    display: flex;
+    justify-content: center;
+
 }

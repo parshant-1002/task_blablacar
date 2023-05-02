@@ -11,8 +11,8 @@ import { registerData } from '../../../Redux/Actions'
 export default function PasswordInput() {
   const dispatch=useDispatch()
   const registeredData=useSelector(state=>state)
-    const [password, setPassword] = useState()
-    const [validationMessage, setValidationMessage] = useState()
+    const [password, setPassword] = useState("")
+    const [validationMessage, setValidationMessage] = useState("")
    
     const navigate=useNavigate()
     const handleSubmit = () => {
@@ -27,7 +27,7 @@ export default function PasswordInput() {
       dispatch(registerData?.password(password))
   
       dispatch(registerData?.signup({...registeredData?.registerReducer,password:password}))
-      navigate("/phone/fill")}
+      navigate("/")}
     }
   return (
     <div className='section-content'>

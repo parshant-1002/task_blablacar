@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
-import { registerReducer } from "../Reducer";
+import { currenytUserReducer, registerReducer, setResetPasswordToken } from "../Reducer";
 
 const appReducer = combineReducers({
     registerReducer: registerReducer,
+    currenytUserReducer:currenytUserReducer,
+   
  
 });
 const rootReducer = (state, action) => {

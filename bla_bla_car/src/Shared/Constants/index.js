@@ -6,7 +6,9 @@ export const STRINGS={
     PASSWORD_HEADING:"Define your password",
     MOBILE_VERIFICATION_HEADING:"Verify your mobile number",
     SEARCH_HEADING:"Find a ride",
-    LOGIN_INPUT_HEADING:"What's your email and password?"
+    LOGIN_INPUT_HEADING:"What's your email and password?",
+    FORGOT_PASSWORD:"What's your email? Check your inbox for a link to create a new password.",
+    RESET_PASSWORD:"Reset Password"
 }
 
 
@@ -36,3 +38,6 @@ export const VALIDATION_MESSAGES={
     }
 
 }
+
+
+export const LOCALSTORAGE_KEY_NAME="token"

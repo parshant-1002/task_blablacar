@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import "./styles.css"
 import { Images } from '../../../Shared/Images'
 import { ToastContainer, toast } from 'react-toastify'
+import { LOCALSTORAGE_KEY_NAME } from '../../../Shared/Constants'
 export default function CustomLinkListCreator({ route, linkText,setDropDownListShow=()=>{} ,setDropDownIconPosition=()=>{},handleSelect=()=>{}}) {
 
    
@@ -10,7 +11,7 @@ export default function CustomLinkListCreator({ route, linkText,setDropDownListS
     const handleClick=()=>{
     handleSelect(linkText)
     if(linkText==="Logout"){
-        localStorage.clear("token")
+        localStorage.clear(LOCALSTORAGE_KEY_NAME)
        
     }
 }
