@@ -3,15 +3,17 @@ import "./styles.css"
 import { Images } from '../../Shared/Images'
 import { useLocation, useNavigate } from 'react-router-dom'
 import DropDownListViewer from '../../Components/Atoms/DropDownListViewer'
-import NavContent from './NavContent'
+import NavContent from './DropDownButton'
+
+import Linkto from '../../Components/Atoms/LinkTo'
 export default function Navbar() {
     const navigate = useNavigate()
     const currentPath = useLocation()
-    const token=localStorage.getItem("token")
+    const token = localStorage.getItem("token")
     const [dropDownIconPosition, setDropDownIconPosition] = useState("dropDownIconDown")
     const [dropDownListShow, setDropDownListShow] = useState(false)
     const dropDownListDataForGuest = [{ linkText: "Log in ", route: "/login" }, { linkText: "Sign up", route: "/register" }]
-    const dropDownListDataForUser = [{ linkText: "Your Rides", route: "/rides" }, { linkText: "Inbox", route: "/messages/list" },{ linkText: "Profile", route: "/dashboard/profile/menu" },{ linkText: "Logout", route: "/" }]
+    const dropDownListDataForUser = [{ linkText: "Your Rides", route: "/rides" }, { linkText: "Inbox", route: "/messages/list" }, { linkText: "Profile", route: "/dashboard/profile/menu" }, { linkText: "Logout", route: "/" }]
     const handleDropDownIconPosition = () => {
         if (dropDownIconPosition === "dropDownIconDown") {
             setDropDownIconPosition("dropDownIconUp")
@@ -30,9 +32,14 @@ export default function Navbar() {
                         <img src={Images.blablacarLogo} alt="BlaBlaCar" onClick={() => { navigate("/") }}></img>
                     </span>
                 </div>
-                <div className='centerContent'></div>
-                {!currentPath?.pathname?.includes("register") &&<NavContent handleDropDownIconPosition={handleDropDownIconPosition} dropDownIconPosition={dropDownIconPosition}/>}
-                {dropDownListShow && <DropDownListViewer dropDownListData={!token?dropDownListDataForGuest:dropDownListDataForUser} setDropDownListShow={setDropDownListShow} setDropDownIconPosition={setDropDownIconPosition} />}
+
+            
+
+            
+                    {!currentPath?.pathname?.includes("register") && <Linkto linkText={"Publish a ride"}/>}
+                    {!currentPath?.pathname?.includes("register") && <NavContent handleDropDownIconPosition={handleDropDownIconPosition} dropDownIconPosition={dropDownIconPosition} />}
+                    {dropDownListShow && <DropDownListViewer dropDownListData={!token ? dropDownListDataForGuest : dropDownListDataForUser} setDropDownListShow={setDropDownListShow} setDropDownIconPosition={setDropDownIconPosition} />}
+               
             </div>
         </div>
     )

@@ -110,3 +110,7 @@
     position: fixed;
     transform: translate(-50%, 0px);
 }
+.userName{
+    margin-right: 10px;
+    font-size: large;
+}

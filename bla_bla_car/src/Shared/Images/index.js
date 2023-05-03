@@ -7,6 +7,8 @@ import ring from "../../assets/ring.svg"
 import cross from "../../assets/cross.svg"
 import calender from "../../assets/calender.svg"
 import userProfileIcon from "../../assets/userProfileIcon.svg"
+import additionIcon from "../../assets/addition.svg"
+
 export  const Images={
     rightArrow,
     blablacarLogo,
@@ -16,6 +18,7 @@ export  const Images={
     ring,
     cross,
     calender,
-    userProfileIcon
+    userProfileIcon,
+    additionIcon
 }
 

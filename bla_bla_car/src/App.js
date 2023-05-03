@@ -6,11 +6,12 @@ import { useSelector } from 'react-redux';
 import Loader from './Components/Atoms/Loader';
 
 function App() {
-  console.log(useSelector(state=>state))
+
+
   return (
     <div className="App">
       <BrowserRouter>
-      
+      <Loader show={useSelector(state=>state?.loaderStateReducer)}/>
         <Navbar />
         <div className='main'>
           <PublicRoutes />

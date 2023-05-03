@@ -74,3 +74,23 @@ export const sendResetPassword=(payload)=>{
     payload
   }
 }
+
+export const settingLoaderState=(payload)=>{
+  return{
+    type:ACTION_STATES.SETTING_LOADER_STATE,
+    payload
+  }
+}
+
+export const uploadProfilePic=(payload)=>{
+  return{
+    type:ACTION_STATES.UPLOADING_PROFILE_PIC,
+    payload
+  }
+}
+export const updateProfile=(payload)=>{
+  return{
+    type:ACTION_STATES.UPDATE_PROFILE,
+    payload
+  }
+}

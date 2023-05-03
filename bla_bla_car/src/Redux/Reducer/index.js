@@ -54,5 +54,16 @@ export const currenytUserReducer = (state = initialStateForUserDetails, action) 
 }
 
 
+export const loaderStateReducer = (state = false, action) => {
+    switch (action?.type) {
+        case ACTION_STATES.SETTING_LOADER_STATE:
+            return (
 
+                state=action?.payload
+            )
+            
+        default:
+            return state;
+    }
+}
 

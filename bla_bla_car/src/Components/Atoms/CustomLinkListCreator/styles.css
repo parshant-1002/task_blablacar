@@ -1,25 +1,49 @@
-.links{
+.links {
     display: flex;
     flex-direction: column;
-      list-style: none;
+    list-style: none;
 
-    
 
-      padding-inline-start: 0px;
-      margin-block-start: 0px;
-      margin-block-end: 0px;
+
+    padding-inline-start: 0px;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
 }
-.linkToEmailInput:hover{
-    background-color: rgb(202, 200, 200);
+
+.profilelinksList {
+    height: fit-content
 }
-.linkText{
+
+.profilelinks {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding-inline-start: 0px;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+}
+
+
+
+.linkText {
     color: rgb(5, 71, 82);
     word-break: break-word;
     display: block;
     font-size: 18px;
     line-height: 20px;
+
 }
-.linkIcon{
+
+.profilelinkText {
+    color: rgb(5, 71, 82);
+    word-break: break-word;
+    display: block;
+    font-size: 30px;
+    line-height: 20px;
+    margin-top: -40px;
+}
+
+.linkIcon {
     margin-left: 16px;
     flex-shrink: 0;
     min-width: 24px;
@@ -27,7 +51,8 @@
     position: absolute;
     right: 20px;
 }
-.linkToEmailInput{
+
+.linkTo {
 
     background: none;
     text-decoration: none;
@@ -47,6 +72,54 @@
     transition: background 200ms ease-out 0s;
     padding-left: 24px;
     padding-right: 24px;
-   
-  
+    height: fit-content;
+
+}
+
+.profilelinkTo {
+    background: none;
+    text-decoration: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgb(237, 237, 237);
+    margin-bottom: 24px !important;
+    position: relative;
+    display: flex;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    -webkit-box-align: center;
+    align-items: center;
+    flex: 1 1 0%;
+    border: 0px;
+    background: none;
+    white-space: pre-line;
+    transition: background 200ms ease-out 0s;
+    padding-left: 24px;
+    padding-right: 24px;
+    height: 110px;
+}
+
+.profilePicDiv {
+
+
+    position: relative;
+    border: solid;
+    border-radius: 9999px;
+    border-color: white;
+    position: absolute;
+    right: 10%;
+
+}
+
+.profilelinkTo:hover {
+    background-color: rgb(237 237 237);
+}
+
+.linkTo:hover {
+    background-color: rgb(237 237 237);
+}
+
+.profilePic {
+    border-radius: 9999px;
+    
+
 }

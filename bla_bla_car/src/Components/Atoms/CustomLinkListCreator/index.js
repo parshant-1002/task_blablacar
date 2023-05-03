@@ -1,10 +1,10 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import "./styles.css"
 import { Images } from '../../../Shared/Images'
-import { ToastContainer, toast } from 'react-toastify'
+
 import { LOCALSTORAGE_KEY_NAME } from '../../../Shared/Constants'
-export default function CustomLinkListCreator({ route, linkText,setDropDownListShow=()=>{} ,setDropDownIconPosition=()=>{},handleSelect=()=>{}}) {
+export default function CustomLinkListCreator({profileViewLink=false, pic=false, route, linkText,setDropDownListShow=()=>{} ,setDropDownIconPosition=()=>{},handleSelect=()=>{}}) {
 
    
 
@@ -12,19 +12,22 @@ export default function CustomLinkListCreator({ route, linkText,setDropDownListS
     handleSelect(linkText)
     if(linkText==="Logout"){
         localStorage.clear(LOCALSTORAGE_KEY_NAME)
-       
-    }
+           }
 }
+// 
 
     return (
     <>
-    <ul className="links" onClick={()=>{handleClick()}} >
-        <li  className="linksList" onClick={()=>{setDropDownListShow(false)
+    <ul className={!profileViewLink?`links`:`profilelinks`} onClick={()=>{handleClick()}} >
+        <li  className={!profileViewLink?`linksList`:`profilelinksList`} onClick={()=>{setDropDownListShow(false)
         setDropDownIconPosition("dropDownIconDown")}}>
-            <Link className="linkToEmailInput" to={route}>
-                <span className="linkText">
+            <Link className={!profileViewLink?`linkTo`:`profilelinkTo`} to={route}>
+                <span className={!profileViewLink?`linkText`:`profilelinkText`}>
                     {linkText}
                 </span>
+               { pic&&<div className="profilePicDiv">
+                    <img className='profilePic' src={Images.profile} alt=""></img>
+                </div>}
                 <span className="linkIcon">
                     <img src={Images.rightArrow} alt=""></img>
                 </span>

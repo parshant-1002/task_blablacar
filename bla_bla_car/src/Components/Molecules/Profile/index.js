@@ -1,0 +1,41 @@
+import React, { useState } from 'react'
+import "./styles.css"
+import NameAndProfilePicView from './NameAndProfilePicView'
+import EditPersonalDetails from './EditPersonalDetails'
+export default function Profile() {
+    const [selectedOptionOne,setSelectedOptionOne]=useState(true)
+    const [selectedOptionTwo,setSelectedOptionTwo]=useState(false)
+    const [showEditPersonalDetails, setShowEditPersonalDetails] = useState(false)
+    return (
+        <div className='profile-section'>
+            <div className='profileWrapper'>
+                <div className='profileContainer'>
+                    <div className='profileHeading'>
+                        <div className='profileHeadingData'>
+
+                            <button className={!selectedOptionOne?`profileHeadingButton`:`profileHeadingButtonSelected`} onClick={()=>{setSelectedOptionOne(true)
+                            setSelectedOptionTwo(false)}}>
+                                <span className='profileHeadingSpan'>About you</span>
+                            </button>
+                        </div>
+                        <div className='profileHeadingData' >
+                            <button className={!selectedOptionTwo?`profileHeadingButton`:`profileHeadingButtonSelected`}  onClick={()=>{setSelectedOptionTwo(true)
+                            setSelectedOptionOne(false)
+                            }}>
+                                <span className='profileHeadingSpan'>Account</span>
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div className='profileBody'>
+            <div className='profileContent'>
+
+           {selectedOptionOne&& <NameAndProfilePicView setShowEditPersonalDetails={setShowEditPersonalDetails}/>}
+            </div>
+            </div>
+            <EditPersonalDetails show={showEditPersonalDetails} setShow={setShowEditPersonalDetails} />
+        </div>
+    )
+}
