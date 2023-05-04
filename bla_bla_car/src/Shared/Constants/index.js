@@ -17,7 +17,9 @@ export const STRINGS={
 export const REGEX={
     email:"^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$",
     name: "[a-zA-Z][a-zA-Z]+",
-    password:"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})"
+    password:"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})",
+    numberAndText:"/^[a-zA-Z0-9]+$/",
+    numer:"/^[0-9]+$/"
 }
 
 export const VALIDATION_MESSAGES={
@@ -39,7 +41,41 @@ export const VALIDATION_MESSAGES={
       
     },
     BIO:"enter more than 15 character and numbers are not accepted  "
-
+    ,  COUNTRY:{
+        NOT_VALID:"Enter Valid country",   
+        EMPTY:"*country Required",
+      
+    },
+    VEHICLENUMBER:{
+        NOT_VALID:"Enter Valid vehicleNumber",   
+        EMPTY:"*VehicleNumber Required",
+      
+    },
+    VEHICLEBRAND:{
+        NOT_VALID:"Enter Valid vehicleBrand",   
+        EMPTY:"*VehicleBrand Required",
+      
+    },
+    VEHICLENAME:{
+        NOT_VALID:"Enter Valid vehicleName",   
+        EMPTY:"*VehicleName Required",
+      
+    },
+    VEHICLETYPE:{
+        NOT_VALID:"Enter Valid vehicleType",   
+        EMPTY:"*VehicleType Required",
+      
+    },
+    VEHICLECOLOR:{
+        NOT_VALID:"Enter Valid vehicleColor",   
+        EMPTY:"*VehicleColor Required",
+      
+    },
+    VEHICLEMODELYEAR:{
+        NOT_VALID:"Enter Valid vehicleModelYear",   
+        EMPTY:"*VehicleModelYear Required",
+      
+    },
 }
 
 

@@ -41,6 +41,3 @@
     transition: max-width 500ms ease-in 0s, background-color 200ms ease-in 0s;
     white-space: nowrap;
 }
-.inputProfilePicture{
-    display: none;
-}

@@ -42,6 +42,13 @@ export default function EditPersonalDetails({ show, setShow = () => { } }) {
             setValidationMessageLastName(VALIDATION_MESSAGES?.LAST_NAME?.NOT_VALID)
         }
         else {
+            const myData = JSON.parse(localStorage.getItem('CurrentUser'));
+            myData.email=email
+            myData.first_name=firstName
+            myData.last_name=lastName
+            myData.dob=dob.toLocaleString().split(",")[0]
+            myData.title=gender
+            localStorage.setItem("CurrentUser",JSON.stringify(myData))
             dispatch(updateProfile({ email: email, first_name: firstName, last_name: lastName, dob: dob.toLocaleString().split(",")[0], title: gender }))
         }
     }

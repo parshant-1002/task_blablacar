@@ -4,9 +4,9 @@ import "./styles.css"
 import { Images } from '../../../Shared/Images'
 
 import { LOCALSTORAGE_KEY_NAME } from '../../../Shared/Constants'
-export default function CustomLinkListCreator({profileViewLink=false, pic=false, route, linkText,setDropDownListShow=()=>{} ,setDropDownIconPosition=()=>{},handleSelect=()=>{}}) {
+export default function CustomLinkListCreator({profileViewLink=false, pic=false, route, linkText,setDropDownListShow=()=>{} ,setDropDownIconPosition=()=>{},handleSelect=()=>{}, profilePic}) {
 
-   
+    
 
     const handleClick=()=>{
     handleSelect(linkText)
@@ -14,7 +14,7 @@ export default function CustomLinkListCreator({profileViewLink=false, pic=false,
         localStorage.clear(LOCALSTORAGE_KEY_NAME)
            }
 }
-// 
+
 
     return (
     <>
@@ -26,7 +26,7 @@ export default function CustomLinkListCreator({profileViewLink=false, pic=false,
                     {linkText}
                 </span>
                { pic&&<div className="profilePicDiv">
-                    <img className='profilePic' src={Images.profile} alt=""></img>
+                   {profilePic? <img className='profilePic' src={profilePic} alt=""></img>:   <img className='profilePic' src={Images.profile} alt=""></img>}
                 </div>}
                 <span className="linkIcon">
                     <img src={Images.rightArrow} alt=""></img>

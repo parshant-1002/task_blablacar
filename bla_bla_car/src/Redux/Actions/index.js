@@ -100,3 +100,28 @@ export const addingBio=(payload)=>{
     payload
   }
 }
+
+export const gettingProfilePic=(payload)=>{
+  return{
+    type:ACTION_STATES.GETTING_PROFILE_PIC,
+   payload
+  }
+}
+export const addVehicleData=(payload)=>{
+  return{
+    type:ACTION_STATES.ADD_VEHICLE_DATA,
+    payload
+  }
+}
+export const savingProfilePic=(payload)=>{
+  return{
+    type:ACTION_STATES.SAVE_PROFILE_PIC,
+    payload
+  }
+}
+export const getVehicleData=(payload)=>{
+  return{
+    type:ACTION_STATES.GET_VEHICLE_DATA,
+    payload
+  }
+}

@@ -99,7 +99,7 @@
 }
 
 .profilePicDiv {
-
+  height: fit-content;;
 
     position: relative;
     border: solid;
@@ -120,6 +120,9 @@
 
 .profilePic {
     border-radius: 9999px;
-    
+  
+    width: 120px;
+    height: 120px;
+    /* object-fit: contain; */
 
 }
