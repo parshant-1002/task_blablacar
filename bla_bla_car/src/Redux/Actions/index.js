@@ -94,3 +94,9 @@ export const updateProfile=(payload)=>{
     payload
   }
 }
+export const addingBio=(payload)=>{
+  return{
+    type:ACTION_STATES.ADDING_MINI_BIO,
+    payload
+  }
+}

@@ -7,7 +7,6 @@ import Loader from './Components/Atoms/Loader';
 
 function App() {
 
-
   return (
     <div className="App">
       <BrowserRouter>

@@ -8,7 +8,7 @@ export default function NavContent({handleDropDownIconPosition=()=>{},dropDownIc
   return (
     <div className='navContent'>
     <button className='navDropDown' onClick={() => { handleDropDownIconPosition() }}>
-    <label className='userName'>{userData?.first_name}</label>
+    {userData&& <label className='userName'>{userData?.first_name}</label>}
         <div className='profileOptions'>
             <img className='profileImg' src={Images?.profile} alt=""></img>
         </div>

@@ -1,5 +1,5 @@
-import { ACTION_STATES } from "../ActionStates";
 
+import { ACTION_STATES } from "../ActionStates";
 const initialStateForRegister = {
     "email": "",
     "password": "",
@@ -40,30 +40,3 @@ export const registerReducer = (state = initialStateForRegister, action) => {
             return state
     }
 }
-
-const initialStateForUserDetails = {}
-export const currenytUserReducer = (state = initialStateForUserDetails, action) => {
-    switch (action?.type) {
-        case ACTION_STATES.SET_CURRENT_USER:
-            return {
-                ...state, ...action?.payload
-            }
-        default:
-            return state;
-    }
-}
-
-
-export const loaderStateReducer = (state = false, action) => {
-    switch (action?.type) {
-        case ACTION_STATES.SETTING_LOADER_STATE:
-            return (
-
-                state=action?.payload
-            )
-            
-        default:
-            return state;
-    }
-}
-

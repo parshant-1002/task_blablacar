@@ -1,9 +1,10 @@
 import { combineReducers } from "redux";
-import { currenytUserReducer, loaderStateReducer, registerReducer} from "../Reducer";
+
+import { registerReducer } from "../Reducer/registerReducer";
+import { loaderStateReducer } from "../Reducer/loaderStateReducer";
 
 const appReducer = combineReducers({
     registerReducer: registerReducer,
-    currenytUserReducer:currenytUserReducer,
     loaderStateReducer:loaderStateReducer,
  
 });

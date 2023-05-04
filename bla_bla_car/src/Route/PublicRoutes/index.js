@@ -14,6 +14,7 @@ import LoginForgetPassword from '../../Components/Cells/EmailResetPasswordInput'
 import ResetPassword from '../../Components/Cells/ResetPassword'
 import Profile from '../../Components/Molecules/Profile'
 import AddOrEditProfilePic from '../../Components/Cells/AddOrEditProfilePic'
+import AddVehicleDetails from '../../Components/Molecules/AddingVehicle'
 
 export default function PublicRoutes() {
     return (
@@ -32,7 +33,8 @@ export default function PublicRoutes() {
             <Route exact path={"/login/forgot"} element={<LoginForgetPassword />} />
             <Route exact path={"/users/password/edit"} element={<ResetPassword />} />
             <Route exact path={"/dashboard/profile/menu"} element={<Profile />} />
-            <Route exact path={"/dashboard/profile/picture"} element={<AddOrEditProfilePic/>} />
+            <Route exact path={"/dashboard/profile/picture"} element={<AddOrEditProfilePic />} />
+            <Route eaxt path={"/dashboard/profile/vehicle/add/license_plate"} element={<AddVehicleDetails />} />
         </Routes>
 
     )

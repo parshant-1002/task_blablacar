@@ -3,7 +3,7 @@ import axios from "axios";
 import { ACTION_STATES } from "../ActionStates";
 import { BASE_URL, URL_EXTENSIONS } from "../../Services/Api/Constants";
 import { LOCALSTORAGE_KEY_NAME } from "../../Shared/Constants";
-import { currentUserUpdate, settingLoaderState } from "../Actions";
+import {  settingLoaderState } from "../Actions";
 
 
 function* postRegisterData(payload) {
@@ -11,8 +11,11 @@ function* postRegisterData(payload) {
     try {
         yield put(settingLoaderState(true))
         const res = yield axios.post(BASE_URL + URL_EXTENSIONS.SIGN_UP, { user: payload?.payload });
-        localStorage.setItem(LOCALSTORAGE_KEY_NAME, (res?.headers?.authorization))
-        localStorage.setItem("CurrentUser",JSON.stringify(res?.data?.status?.data))
+        if(res){
+
+            localStorage.setItem(LOCALSTORAGE_KEY_NAME, (res?.headers?.authorization))
+            localStorage.setItem("CurrentUser",JSON.stringify(res?.data?.status?.data))
+        }
        
         yield put(settingLoaderState(false))
     } catch (error) {
@@ -23,12 +26,16 @@ function* postRegisterData(payload) {
 
 function* postLoginData(payload) {
     try {
+      
         yield put(settingLoaderState(true))
         const res = yield axios.post(
             BASE_URL + URL_EXTENSIONS.SIGN_IN, { user: payload?.payload }
         );
-        localStorage.setItem(LOCALSTORAGE_KEY_NAME, (res?.headers?.authorization))
-        localStorage.setItem("CurrentUser",JSON.stringify(res?.data?.status?.data))
+        if(res){
+
+            localStorage.setItem(LOCALSTORAGE_KEY_NAME, (res?.headers?.authorization))
+            localStorage.setItem("CurrentUser",JSON.stringify(res?.data?.status?.data))
+        }
         yield put(settingLoaderState(false))
     } catch (error) {
         yield put(settingLoaderState(false))
@@ -51,6 +58,7 @@ function* sendPasswordResetMailData(payload) {
 }
 function* sendResetPassword(payload) {
     try {
+        
         yield put(settingLoaderState(true))
         const res = yield axios.put(
             BASE_URL + URL_EXTENSIONS.FORGET_PASSWORD, { user: payload?.payload }
@@ -76,18 +84,43 @@ function* sendResetPassword(payload) {
 //     }
 // }
 function* updateProfileData(payload) {
-    // try {
-    //     yield put(settingLoaderState(true))
-    //     const res = yield axios.post(
-    //         BASE_URL + URL_EXTENSIONS.FORGET_PASSWORD, { user: payload?.payload }
-    //     );
-
-    //     yield put(settingLoaderState(false))
-    // } catch (error) {
-    //     yield put(settingLoaderState(false))
-    //     console.log(error, "errorInLogin")
-    // }
+    try {
+        const token =localStorage.getItem("token")
+        const config = {
+            headers: { 'Authorization': `Bearer ${token}` }
+          };
+        yield put(settingLoaderState(true))
+        const res = yield axios.put(
+            BASE_URL + URL_EXTENSIONS.SIGN_UP, { user: payload?.payload },config
+        );
+        console.log(res?.data?.status?.data,"profileUpdated")
+        // localStorage.setItem("CurrentUser",JSON.stringify(res?.data?.status?.data))
+        yield put(settingLoaderState(false))
+    } catch (error) {
+        yield put(settingLoaderState(false))
+        console.log(error, "errorInLogin")
+    }
 }
+
+function* updateBioData(payload) {
+    try {
+        const token =localStorage.getItem("token")
+        const config = {
+            headers: { 'Authorization': `Bearer ${token}` }
+          };
+        yield put(settingLoaderState(true))
+        const res = yield axios.put(
+            BASE_URL + URL_EXTENSIONS.SIGN_UP, { user: payload?.payload },config
+        );
+        console.log(res?.data?.status?.data,"bioUpdated")
+        // localStorage.setItem("CurrentUser",JSON.stringify(res?.data?.status?.data))
+        yield put(settingLoaderState(false))
+    } catch (error) {
+        yield put(settingLoaderState(false))
+        console.log(error, "errorInLogin")
+    }
+}
+
 
 
 function* Saga() {
@@ -96,7 +129,8 @@ function* Saga() {
         takeLatest(ACTION_STATES.SIGN_IN, postLoginData),
         takeLatest(ACTION_STATES.SEND_FORGET_PASSWORD_MAIL, sendPasswordResetMailData),
         takeLatest(ACTION_STATES.SEND_RESET_PASSWORD, sendResetPassword),
-        takeLatest(ACTION_STATES.UPDATE_PROFILE, updateProfileData)
+        takeLatest(ACTION_STATES.UPDATE_PROFILE, updateProfileData),
+        takeLatest(ACTION_STATES.ADDING_MINI_BIO, updateBioData)
     ]);
 }
 export default Saga;

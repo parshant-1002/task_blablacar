@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import "./styles.css"
-import NameAndProfilePicView from './NameAndProfilePicView'
-import EditPersonalDetails from './EditPersonalDetails'
+import NameAndProfilePicView from './ProfileView/NameAndProfilePicView'
+import EditPersonalDetails from './ProfileView/EditPersonalDetails'
+import AddingMiniBio from './ProfileView/AddingMiniBio'
+import AccountDetailsUpdate from './AccountView/AccountDetailsUpdate'
 export default function Profile() {
     const [selectedOptionOne,setSelectedOptionOne]=useState(true)
     const [selectedOptionTwo,setSelectedOptionTwo]=useState(false)
     const [showEditPersonalDetails, setShowEditPersonalDetails] = useState(false)
+    const [showMiniBio, setShowMiniBio] = useState(false)
     return (
         <div className='profile-section'>
             <div className='profileWrapper'>
@@ -32,10 +35,12 @@ export default function Profile() {
             <div className='profileBody'>
             <div className='profileContent'>
 
-           {selectedOptionOne&& <NameAndProfilePicView setShowEditPersonalDetails={setShowEditPersonalDetails}/>}
+           {selectedOptionOne&& <NameAndProfilePicView setShowEditPersonalDetails={setShowEditPersonalDetails} setShowMiniBio={setShowMiniBio}/>}
+           {selectedOptionTwo&& <AccountDetailsUpdate/>}
             </div>
             </div>
             <EditPersonalDetails show={showEditPersonalDetails} setShow={setShowEditPersonalDetails} />
+            <AddingMiniBio show={showMiniBio} setShow={setShowMiniBio} />
         </div>
     )
 }
