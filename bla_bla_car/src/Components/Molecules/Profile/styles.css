@@ -82,7 +82,8 @@
     padding: 10px;
     border-bottom:solid;
     border-width: 1px;
-    border-color:lightgray
+    border-color:lightgray;
+    text-align: left;
 }
 .headingData{
 

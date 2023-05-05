@@ -7,8 +7,8 @@ import EditPersonalDetails from './EditPersonalDetails'
 import { useDispatch, useSelector } from 'react-redux'
 import { getVehicleData, gettingProfilePic } from '../../../../Redux/Actions'
 
-export default function NameAndProfilePicView({ setShowEditPersonalDetails = () => { }, setShowMiniBio = () => { } }) {
-
+export default function NameAndProfilePicView({ setShowEditPersonalDetails = () => { }, setShowMiniBio = () => { },setShowEmailVerificationModal }) {
+    
     const userData = JSON.parse(localStorage.getItem(("CurrentUser")))
     const dispatch = useDispatch()
     useEffect(() => {
@@ -28,7 +28,7 @@ export default function NameAndProfilePicView({ setShowEditPersonalDetails = () 
             </div>
             <div className='profileMain'>
                 <h1 className='headingData'>Verify Your Profile</h1>
-                <Linkto linkText={`Confirm email ${userData?.email}`} />
+                <PathTo linkText={`Confirm email ${userData?.email}`}  setShow={setShowEmailVerificationModal}/>
             </div>
             <div className='profileMain'>
                 <h1 className='headingData'>About You</h1>

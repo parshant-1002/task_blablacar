@@ -25,7 +25,7 @@ export default function AddOrEditProfilePic() {
         <div>
             <Header heading="Don't wear sunglasses, look straight ahead and make sure you're alone."></Header>
             <div className='continueButtonDiv'>
-                <input id="profilePicInput" type="file" name="image" className='inputProfilePicture'  onChange={(e)=>{setImage(e.target.files[0])}}></input>
+                <input id="profilePicInput" type="file" accept="image/*" name="image" className='inputProfilePicture'  onChange={(e)=>{setImage(e.target.files[0])}}></input>
             <label  className='continueButton' onClick={handleSubmit}>Choose a Picture</label>
         </div>
        

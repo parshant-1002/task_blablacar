@@ -166,7 +166,7 @@ function* addVehicle(payload) {
         const res = yield axios.post(
             BASE_URL + URL_EXTENSIONS.VEHICLE, { vehicle: payload?.payload },config
         );
-        console.log(res?.data?.status?.data,"vehicleData")
+        payload.navigateToProfile(res)
         // localStorage.setItem("CurrentUser",JSON.stringify(res?.data?.status?.data))
         yield put(settingLoaderState(false))
     } catch (error) {
@@ -176,6 +176,7 @@ function* addVehicle(payload) {
 }
 function* getVehicle() {
     try {
+      
         const token =localStorage.getItem("token")
         const config = {
             headers: { 'Authorization': token }
@@ -184,7 +185,7 @@ function* getVehicle() {
         const res = yield axios.get(
             BASE_URL + URL_EXTENSIONS.VEHICLE,config
         );
-        console.log(res,"sdkfjghsdjfghsudfgsyudfgsyudf")
+   console.log(res?.data,"res in saga")
     yield put(setVehicleData(res?.data))
         yield put(settingLoaderState(false))
     } catch (error) {
@@ -204,8 +205,7 @@ function* deleteVehicleData(payload) {
         const res = yield axios.delete(
             BASE_URL + URL_EXTENSIONS.VEHICLE+`/${payload?.id}`,config
         );
-
-    yield put(setVehicleData(res?.data))
+           payload.navigateToProfile(res)
         yield put(settingLoaderState(false))
     } catch (error) {
         yield put(settingLoaderState(false))
@@ -220,12 +220,13 @@ function* updateVehicleDetails(payload) {
         const config = {
             headers: { 'Authorization': token }
           };
-        yield put(settingLoaderState(true))
-        const res = yield axios.put(
-            BASE_URL + URL_EXTENSIONS.VEHICLE+`/${payload?.id}`,{ vehicle: payload?.payload },config
-        );
-
-    yield put(setVehicleData(res?.data))
+          yield put(settingLoaderState(true))
+          const res = yield axios.put(
+              BASE_URL + URL_EXTENSIONS.VEHICLE+`/${payload?.id}`,{ vehicle: payload?.payload },config
+              );
+              
+              payload.navigateToProfile(res)
+ 
         yield put(settingLoaderState(false))
     } catch (error) {
         yield put(settingLoaderState(false))

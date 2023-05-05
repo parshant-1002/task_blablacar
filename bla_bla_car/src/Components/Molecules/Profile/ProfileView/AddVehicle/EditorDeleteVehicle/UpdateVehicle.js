@@ -30,7 +30,10 @@ export default function UpdateVehicles({show,setShow=()=>{},id,vehicle}) {
   const dispatch=useDispatch()
 
   const navigate=useNavigate()
-  
+  const  navigateToProfile=(res)=>{
+    navigate("/dashboard/profile/menu")
+    
+  }
 
 
   const handleSubmit = () => {
@@ -52,13 +55,13 @@ export default function UpdateVehicles({show,setShow=()=>{},id,vehicle}) {
     if(   !vehicleColor.trim() ){
     setVehicleColorValidationMessage(VALIDATION_MESSAGES?.VEHICLECOLOR?.EMPTY)
    }
-   if( !vehicleModelYear.trim() ){
+   if( !vehicleModelYear ){
     setVehicleModelYearValidationMessage(VALIDATION_MESSAGES?.VEHICLEMODELYEAR?.EMPTY)
    }
   else{
 
-    dispatch(updateVehicleData({country:country,vehicle_number:vehicleNumber,vehicle_brand : vehicleBrand,vehicle_name: vehicleName,vehicle_type : vehicleType,vehicle_color : vehicleColor,vehicle_model_year : vehicleModelYear},id))
-   navigate("/dashboard/profile/menu")
+    dispatch(updateVehicleData({country:country,vehicle_number:vehicleNumber,vehicle_brand : vehicleBrand,vehicle_name: vehicleName,vehicle_type : vehicleType,vehicle_color : vehicleColor,vehicle_model_year : vehicleModelYear},id,navigateToProfile))
+  
   }
 }
   return (

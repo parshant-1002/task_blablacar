@@ -26,6 +26,10 @@ export default function AddVehicleDetails() {
   const [vehicleModelYearValidationMessage, setVehicleModelYearValidationMessage] = useState()
   const dispatch=useDispatch()
   const navigate=useNavigate()
+const navigateToProfile=(res)=>{
+  navigate("/dashboard/profile/menu")
+}
+
   const handleSubmit = () => {
     if( !country.trim()){
       setCountryValidationMessage(VALIDATION_MESSAGES?.COUNTRY?.EMPTY)
@@ -50,8 +54,8 @@ export default function AddVehicleDetails() {
    }
   else{
 
-    dispatch(addVehicleData({country:country,vehicle_number:vehicleNumber,vehicle_brand : vehicleBrand,vehicle_name: vehicleName,vehicle_type : vehicleType,vehicle_color : vehicleColor,vehicle_model_year : vehicleModelYear}))
-    navigate("/dashboard/profile/menu")
+    dispatch(addVehicleData({country:country,vehicle_number:vehicleNumber,vehicle_brand : vehicleBrand,vehicle_name: vehicleName,vehicle_type : vehicleType,vehicle_color : vehicleColor,vehicle_model_year : vehicleModelYear},navigateToProfile))
+   
   }
 }
   return (

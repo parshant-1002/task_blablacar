@@ -107,10 +107,11 @@ export const gettingProfilePic = (payload) => {
     payload
   }
 }
-export const addVehicleData = (payload) => {
+export const addVehicleData = (payload,navigateToProfile) => {
   return {
     type: ACTION_STATES.ADD_VEHICLE_DATA,
-    payload
+    payload,
+    navigateToProfile
   }
 }
 export const savingProfilePic = (payload) => {
@@ -126,22 +127,25 @@ export const getVehicleData = () => {
   }
 }
 export const setVehicleData = (payload) => {
+  console.log(payload,"res in action")
   return {
     type: ACTION_STATES.SET_VEHICLE_DATA,
     payload
   }
 }
 
-export const deleteVehicle = (id) => {
+export const deleteVehicle = (id,navigateToProfile) => {
   return {
     type: ACTION_STATES?.DELETE_VEHICLE,
-    id
+    id,
+    navigateToProfile
   }
 }
-export const updateVehicleData = (payload,id) => {
+export const updateVehicleData = (payload,id,navigateToProfile) => {
   return {
     type: ACTION_STATES.UPDATE_VEHICLE,
     payload,
-    id
+    id,    
+    navigateToProfile
   }
 }

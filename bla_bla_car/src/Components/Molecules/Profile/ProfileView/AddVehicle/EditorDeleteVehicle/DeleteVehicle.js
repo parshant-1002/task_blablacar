@@ -9,10 +9,16 @@ import { useNavigate } from 'react-router'
 export default function DeleteVehicle({show,setShow=()=>{},id}) {
     const dispatch=useDispatch()
     const navigate=useNavigate()
+    const navigateToProfile=(res)=>{
+        navigate("/dashboard/profile/menu")
+        getVehicleData({})
+        console.log("deleted",res)
+    }
+
     const handleSubmit=()=>{
-    dispatch(deleteVehicle(id))
+    dispatch(deleteVehicle(id,navigateToProfile))
     setShow(false)
-    navigate("/dashboard/profile/menu")
+   
     
     }
   return (
