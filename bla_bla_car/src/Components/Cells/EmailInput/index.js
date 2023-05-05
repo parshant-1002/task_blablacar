@@ -13,6 +13,7 @@ export default function EmailInput() {
     const [email, setEmail] = useState("")
     const [validationMessage, setValidationMessage] = useState()
     const navigate = useNavigate()
+ 
     const handleSubmit = () => {
         if (!email.trim()) {
             setValidationMessage(VALIDATION_MESSAGES?.EMAIL?.EMPTY)

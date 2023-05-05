@@ -46,10 +46,12 @@ export const registerData = {
 
 }
 export const loginData = {
-  signin: (payload) => {
+  signin: (payload,successLogin,failedLogin) => {
     return {
       type: ACTION_STATES.SIGN_IN,
-      payload
+      payload,
+      successLogin,
+      failedLogin
     }
   }
 }

@@ -24,7 +24,7 @@ function* postRegisterData(payload) {
         console.log(error, "errorInRegister")
     }
 }
-
+// successLogin,failedLogin
 function* postLoginData(payload) {
     try {
       
@@ -32,6 +32,7 @@ function* postLoginData(payload) {
         const res = yield axios.post(
             BASE_URL + URL_EXTENSIONS.SIGN_IN, { user: payload?.payload }
         );
+        payload?.successLogin()
         if(res){
 
             localStorage.setItem(LOCALSTORAGE_KEY_NAME, (res?.headers?.authorization))
@@ -40,7 +41,8 @@ function* postLoginData(payload) {
         yield put(settingLoaderState(false))
     } catch (error) {
         yield put(settingLoaderState(false))
-        console.log(error, "errorInLogin")
+        payload?.failedLogin(error?.response?.data)
+        
     }
 }
 

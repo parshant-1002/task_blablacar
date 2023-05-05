@@ -20,10 +20,12 @@ export default function LoginInputs() {
     const [validationMessagePassword, setValidationMessagePassword] = useState()
     const navigate=useNavigate()
 
-    const notify = () => {
-     
-  
-       }
+    const successLogin=()=>{
+        navigate("/")
+    }
+    const failedLogin=(res)=>{
+        setValidationMessagePassword(res)
+    }
 
     const handleSubmit = () => {
 
@@ -40,10 +42,9 @@ export default function LoginInputs() {
             setValidationMessageEmail(VALIDATION_MESSAGES?.EMAIL?.NOT_VALID)
         }
         else {
-            setTimeout(()=>{ notify()},1000)
-        
-            dispatch(loginData?.signin({email:email,password:password}))
-            navigate("/")
+               
+            dispatch(loginData?.signin({email:email,password:password},successLogin,failedLogin))
+            
         }
     }
     return (
@@ -52,7 +53,7 @@ export default function LoginInputs() {
             <div className='section'>
                 <CustomInput state={email} setState={setEmail} placeHolder="email" validationMessage={validationMessageEmail} setValidationMessage={setValidationMessageEmail} handleSubmit={handleSubmit} />
                 <label className='validationMessage'>{validationMessageEmail}</label>
-                <CustomInput state={password} setState={setPassword} placeHolder="password" validationMessage={validationMessagePassword} setValidationMessage={setValidationMessagePassword} handleSubmit={handleSubmit} />
+                <CustomInput type={"password"} state={password} setState={setPassword} placeHolder="password" validationMessage={validationMessagePassword} setValidationMessage={setValidationMessagePassword} handleSubmit={handleSubmit} />
                 <label className='validationMessage'>{validationMessagePassword}</label>
             </div>
             <ForgetPassword/>
