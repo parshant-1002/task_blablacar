@@ -84,10 +84,11 @@ export const settingLoaderState = (payload) => {
   }
 }
 
-export const uploadProfilePic = (payload) => {
+export const uploadProfilePic = (payload,successImageUpload) => {
   return {
     type: ACTION_STATES.UPLOADING_PROFILE_PIC,
-    payload
+    payload,
+    successImageUpload
   }
 }
 export const updateProfile = (payload) => {

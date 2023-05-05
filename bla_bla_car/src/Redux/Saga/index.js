@@ -85,7 +85,7 @@ function* uploadingPic(payload) {
         const res = yield axios.put(
             BASE_URL + URL_EXTENSIONS.PROFILE_PIC,  payload?.payload ,config
         );
-
+        payload?.successImageUpload()
         yield put(settingLoaderState(false))
      
     } catch (error) {

@@ -9,14 +9,18 @@ export default function AddOrEditProfilePic() {
     const [image,setImage]=useState()
     const dispatch=useDispatch()
     const navigate=useNavigate()
-
+const successImageUpload=()=>{
+  navigate("/dashboard/profile/menu")
+}
     const handleSubmit=()=>{
       const formData = new FormData();
       formData.append("image", image);
       console.log(formData,"formData")
-    dispatch(uploadProfilePic(formData))
+       
 
-      navigate("/dashboard/profile/menu")
+    dispatch(uploadProfilePic(formData,successImageUpload))
+
+     
      
     }
   return (
