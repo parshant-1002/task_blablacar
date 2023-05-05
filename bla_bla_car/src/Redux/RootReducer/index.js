@@ -3,7 +3,7 @@ import { combineReducers } from "redux";
 import { registerReducer } from "../Reducer/registerReducer";
 import { loaderStateReducer } from "../Reducer/loaderStateReducer";
 import { profilePicReducer } from "../Reducer/ProfilePicReducer";
-import { VehicleDataReducer } from "../Reducer/getVehicleData";
+import { VehicleDataReducer } from "../Reducer/setVehicleData";
 
 const appReducer = combineReducers({
     registerReducer: registerReducer,

@@ -3,7 +3,8 @@ import axios from "axios";
 import { ACTION_STATES } from "../ActionStates";
 import { BASE_URL, URL_EXTENSIONS } from "../../Services/Api/Constants";
 import { LOCALSTORAGE_KEY_NAME } from "../../Shared/Constants";
-import {  getVehicleData, savingProfilePic, settingLoaderState } from "../Actions";
+import {  getVehicleData, savingProfilePic, setVehicleData, settingLoaderState } from "../Actions";
+import { useNavigate } from "react-router-dom";
 
 
 function* postRegisterData(payload) {
@@ -70,6 +71,7 @@ function* sendResetPassword(payload) {
         console.log(error, "error in reseting password")
     }
 }
+
 function* uploadingPic(payload) {
     try {
         const token =localStorage.getItem("token")
@@ -83,6 +85,7 @@ function* uploadingPic(payload) {
         );
 
         yield put(settingLoaderState(false))
+     
     } catch (error) {
         yield put(settingLoaderState(false))
         console.log(error, "error in uploading pic")
@@ -171,7 +174,7 @@ function* addVehicle(payload) {
         console.log(error, "error in adding vehicle")
     }
 }
-function* getVehicle(payload) {
+function* getVehicle() {
     try {
         const token =localStorage.getItem("token")
         const config = {
@@ -181,8 +184,8 @@ function* getVehicle(payload) {
         const res = yield axios.get(
             BASE_URL + URL_EXTENSIONS.VEHICLE,config
         );
-        console.log(res?.data?.status?.data,"vehicleData")
-    yield put(getVehicleData(res))
+
+    yield put(setVehicleData(res?.data))
         yield put(settingLoaderState(false))
     } catch (error) {
         yield put(settingLoaderState(false))

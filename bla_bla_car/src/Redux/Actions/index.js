@@ -119,9 +119,15 @@ export const savingProfilePic=(payload)=>{
     payload
   }
 }
-export const getVehicleData=(payload)=>{
+export const getVehicleData=()=>{
   return{
     type:ACTION_STATES.GET_VEHICLE_DATA,
+ 
+  }
+}
+export const setVehicleData=(payload)=>{
+  return{
+    type:ACTION_STATES.SET_VEHICLE_DATA,
     payload
   }
 }

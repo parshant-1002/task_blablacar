@@ -7,21 +7,21 @@ import EditPersonalDetails from './EditPersonalDetails'
 import { useDispatch, useSelector } from 'react-redux'
 import { getVehicleData, gettingProfilePic } from '../../../../Redux/Actions'
 
-export default function NameAndProfilePicView({setShowEditPersonalDetails=()=>{},setShowMiniBio=()=>{}}) {
-    
+export default function NameAndProfilePicView({ setShowEditPersonalDetails = () => { }, setShowMiniBio = () => { } }) {
+
     const userData = JSON.parse(localStorage.getItem(("CurrentUser")))
-    const dispatch=useDispatch()
-    useEffect(()=>{
-      dispatch(gettingProfilePic({}))
-      dispatch(getVehicleData({}))
-    },[])
-   const profilePic=useSelector(state=>state)
-    console.log(profilePic,"fcgxfc")
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(gettingProfilePic({}))
+        dispatch(getVehicleData({}))
+    }, [])
+    const StoreData = useSelector(state => state)
+
     const handleSelect = () => { }
     return (
         <div className='profile'>
             <div className='profileMain'>
-                <CustomLinkListCreator pic={true} profileViewLink={true} linkText={userData?.first_name} handleSelect={handleSelect}  profilePic={profilePic?.profilePicReducer}/>
+                <CustomLinkListCreator pic={true} profileViewLink={true} linkText={userData?.first_name} handleSelect={handleSelect} profilePic={StoreData?.profilePicReducer} />
                 <Linkto linkText='Add profile picture' route="/dashboard/profile/picture" />
                 <PathTo linkText='Edit Personal Details' picNeeded={false} setShow={setShowEditPersonalDetails} />
             </div>
@@ -31,14 +31,27 @@ export default function NameAndProfilePicView({setShowEditPersonalDetails=()=>{}
             </div>
             <div className='profileMain'>
                 <h1 className='headingData'>About You</h1>
-                <PathTo linkText='Add a mini bio'  setShow={setShowMiniBio}/>
+                <PathTo linkText='Add a mini bio' setShow={setShowMiniBio} />
             </div>
             <div className='profileMain'>
                 <h1 className='headingData'>Vehicles</h1>
-                
-                <Linkto linkText='Add vehicle' route="/dashboard/profile/vehicle/add"/>
+
+
+                {Object.values(StoreData?.vehicleDataReducer)?.map(val =>
+                    <div>
+                        <CustomLinkListCreator
+                            linkText={
+                                `VehicleName : ${val?.vehicle_name}  
+                                    VehicleColor :${val?.vehicle_color}`
+                            }
+                            route={`/dashboard/profile/vehicle/${val?.id}`}
+                        />
+                    </div>
+                )}
+
+                <Linkto linkText='Add vehicle' route="/dashboard/profile/vehicle/add" />
             </div>
-          
+
         </div>
 
     )

@@ -7,6 +7,7 @@ import ValidationText from '../../../../Atoms/ValidationText'
 import { isValidName, isValidNumber, isValidNumberAndText } from '../../../../../Shared/Utilities'
 import { useDispatch } from 'react-redux'
 import { addVehicleData } from '../../../../../Redux/Actions'
+import { useNavigate } from 'react-router-dom'
 
 export default function AddVehicleDetails() {
   const [country, setCountry] = useState("")
@@ -24,31 +25,35 @@ export default function AddVehicleDetails() {
   const [vehicleModelYear, setVehicleModelYear] = useState("")
   const [vehicleModelYearValidationMessage, setVehicleModelYearValidationMessage] = useState()
   const dispatch=useDispatch()
+  const navigate=useNavigate()
   const handleSubmit = () => {
+    if( !country.trim()){
+      setCountryValidationMessage(VALIDATION_MESSAGES?.COUNTRY?.EMPTY)
+    }
+     if( !vehicleBrand.trim()  ){
+      setVehicleBrandValidationMessage(VALIDATION_MESSAGES?.VEHICLEBRAND?.EMPTY)
+    }
+     if( !vehicleName.trim() ){
+      setVehicleNameValidationMessage(VALIDATION_MESSAGES?.VEHICLENAME?.EMPTY)
+    }
+    if(   !vehicleNumber.trim() ){
+    setVehicleNumberValidationMessage(VALIDATION_MESSAGES?.VEHICLENUMBER?.EMPTY)
+   }
+    if(   !vehicleType.trim() ){
+    setVehicleTypeValidationMessage(VALIDATION_MESSAGES?.VEHICLETYPE?.EMPTY)
+   }
+    if(   !vehicleColor.trim() ){
+    setVehicleColorValidationMessage(VALIDATION_MESSAGES?.VEHICLECOLOR?.EMPTY)
+   }
+   if( !vehicleModelYear.trim() ){
+    setVehicleModelYearValidationMessage(VALIDATION_MESSAGES?.VEHICLEMODELYEAR?.EMPTY)
+   }
+  else{
 
-    !country.trim() && setCountryValidationMessage(VALIDATION_MESSAGES?.COUNTRY?.EMPTY)
-    !vehicleNumber.trim() && setVehicleBrandValidationMessage(VALIDATION_MESSAGES?.VEHICLEBRAND?.EMPTY)
-    !vehicleBrand.trim() && setVehicleNameValidationMessage(VALIDATION_MESSAGES?.VEHICLENAME?.EMPTY)
-    !vehicleName.trim() && setVehicleNumberValidationMessage(VALIDATION_MESSAGES?.VEHICLENUMBER?.EMPTY)
-    !vehicleType.trim() && setVehicleTypeValidationMessage(VALIDATION_MESSAGES?.VEHICLETYPE?.EMPTY)
-    !vehicleColor.trim() && setVehicleColorValidationMessage(VALIDATION_MESSAGES?.VEHICLECOLOR?.EMPTY)
-    !vehicleModelYear.trim() && setVehicleModelYearValidationMessage(VALIDATION_MESSAGES?.VEHICLEMODELYEAR?.EMPTY)
-    // !isValidName.test(country) && setCountryValidationMessage(VALIDATION_MESSAGES?.COUNTRY?.NOT_VALID)
-    // !isValidName.test(vehicleBrand) && setVehicleBrandValidationMessage(VALIDATION_MESSAGES?.VEHICLEBRAND?.NOT_VALID)
-    // !isValidName.test(vehicleType) && setVehicleNameValidationMessage(VALIDATION_MESSAGES?.VEHICLENAME?.NOT_VALID)
-    // !isValidName.test(vehicleColor) && setVehicleTypeValidationMessage(VALIDATION_MESSAGES?.VEHICLETYPE?.NOT_VALID)
-    // !isValidName.test(vehicleModelYear) && setVehicleColorValidationMessage(VALIDATION_MESSAGES?.VEHICLECOLOR?.NOT_VALID)
-
-    // if (!isValidNumber.test(vehicleModelYear)) {
-    //   setVehicleModelYearValidationMessage(VALIDATION_MESSAGES?.VEHICLEMODELYEAR?.NOT_VALID)
-    // }
-    // else if (!isValidNumberAndText.test(vehicleNumber)) {
-    //   setVehicleNumberValidationMessage(VALIDATION_MESSAGES?.VEHICLENUMBER?.NOT_VALID)
-    // }
-    // else{
-  dispatch(addVehicleData({country:country,vehicle_number:vehicleNumber,vehicle_brand : vehicleBrand,vehicle_name: vehicleName,vehicle_type : vehicleType,vehicle_color : vehicleColor,vehicle_model_year : vehicleModelYear}))
-    // }
+    dispatch(addVehicleData({country:country,vehicle_number:vehicleNumber,vehicle_brand : vehicleBrand,vehicle_name: vehicleName,vehicle_type : vehicleType,vehicle_color : vehicleColor,vehicle_model_year : vehicleModelYear}))
+    navigate("/dashboard/profile/menu")
   }
+}
   return (
     <div>
       <Header heading={STRINGS?.ADDING_VEHICLE_DETAILS} />
@@ -65,7 +70,7 @@ export default function AddVehicleDetails() {
         <ValidationText message={vehicleTypeValidationMessage} />
         <CustomInput placeHolder='vehicle_color' state={vehicleColor} setState={setVehicleColor} validationMessage={vehicleColorValidationMessage} setValidationMessage={setVehicleColorValidationMessage} />
         <ValidationText message={vehicleColorValidationMessage} />
-        <CustomInput placeHolder='vehicle_model_year' state={vehicleModelYear} setState={setVehicleModelYear} validationMessage={vehicleModelYearValidationMessage} setValidationMessage={setVehicleModelYearValidationMessage} />
+        <CustomInput type={"number"} placeHolder='vehicle_model_year' state={vehicleModelYear} setState={setVehicleModelYear} validationMessage={vehicleModelYearValidationMessage} setValidationMessage={setVehicleModelYearValidationMessage} />
         <ValidationText message={vehicleModelYearValidationMessage} />
       </div>
       <ContinueButton ButtonText="save" handleSubmit={handleSubmit} />

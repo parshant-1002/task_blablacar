@@ -1,11 +1,9 @@
 
 import { ACTION_STATES } from "../ActionStates";
-const initialStateForRegister = {
-   
-}
+const initialStateForRegister = {}
 export const VehicleDataReducer = (state = initialStateForRegister, action) => {
     switch (action?.type) {
-        case ACTION_STATES.GET_VEHICLE_DATA:
+        case ACTION_STATES.SET_VEHICLE_DATA:
             return {
                 ...state, ...action?.payload
             }

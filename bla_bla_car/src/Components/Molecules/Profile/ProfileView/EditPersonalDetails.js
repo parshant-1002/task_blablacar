@@ -10,6 +10,7 @@ import DateInput from '../../../Atoms/DateInput'
 import { useDispatch } from 'react-redux'
 import { updateProfile } from '../../../../Redux/Actions'
 import ValidationText from '../../../Atoms/ValidationText'
+import { useNavigate } from 'react-router-dom'
 export default function EditPersonalDetails({ show, setShow = () => { } }) {
     const userData = JSON.parse(localStorage.getItem("CurrentUser"))
     const [firstName, setFirstName] = useState(userData?.first_name || "")
@@ -20,6 +21,7 @@ export default function EditPersonalDetails({ show, setShow = () => { } }) {
     const [emailValidationMessage, setEmailValidationMessage] = useState("")
     const [validationMessageFirstName, setValidationMessageFirstName] = useState()
     const [validationMessageLastName, setValidationMessageLastName] = useState()
+    const  navigate=useNavigate()
     const dispatch = useDispatch()
     const handleSubmit = () => {
         if (!email.trim()) {
@@ -50,6 +52,7 @@ export default function EditPersonalDetails({ show, setShow = () => { } }) {
             myData.title=gender
             localStorage.setItem("CurrentUser",JSON.stringify(myData))
             dispatch(updateProfile({ email: email, first_name: firstName, last_name: lastName, dob: dob.toLocaleString().split(",")[0], title: gender }))
+           setShow(false)
         }
     }
     return (
