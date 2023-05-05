@@ -61,27 +61,27 @@ export default function EditPersonalDetails({ show, setShow = () => { } }) {
             <div className='section-content'>
 
         
-            <div className='passwordFillingMessageDiv'>
-                <span className='passwordFillingMessage'>First Name</span>
+            <div className='FillingMessageDiv'>
+                <span className='FillingMessage'>First Name</span>
             </div>
             <CustomInput state={firstName} setState={setFirstName} validationMessage={validationMessageFirstName} setValidationMessage={setValidationMessageFirstName} placeHolder='first Name' />
             <ValidationText message={validationMessageFirstName} />
-            <div className='passwordFillingMessageDiv'>
-                <span className='passwordFillingMessage'>Last Name</span>
+            <div className='FillingMessageDiv'>
+                <span className='FillingMessage'>Last Name</span>
             </div>
             <CustomInput state={lastName} setState={setLastName} validationMessage={validationMessageLastName} setValidationMessage={setValidationMessageLastName} placeHolder='last Name' />
             <ValidationText message={validationMessageLastName} />
-            <div className='passwordFillingMessageDiv'>
-                <span className='passwordFillingMessage'>Gender</span>
+            <div className='FillingMessageDiv'>
+                <span className='FillingMessage'>Gender</span>
             </div>
             <CustomInput state={gender} setState={SetGender} />
 
-            <div className='passwordFillingMessageDiv'>
-                <span className='passwordFillingMessage'>Date of Birth</span>
+            <div className='FillingMessageDiv'>
+                <span className='FillingMessage'>Date of Birth</span>
             </div>
             <DateInput startDate={dob} setStartDate={setDob} />
-            <div className='passwordFillingMessageDiv'>
-                <span className='passwordFillingMessage'>Email Address</span>
+            <div className='FillingMessageDiv'>
+                <span className='FillingMessage'>Email Address</span>
             </div>
             <CustomInput state={email} setState={setEmail} validationMessage={emailValidationMessage} setValidationMessage={setEmailValidationMessage} placeHolder='email' />
             <ValidationText message={emailValidationMessage} />

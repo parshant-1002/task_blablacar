@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { getVehicleData } from '../../../../../Redux/Actions'
+import Header from '../../../../Atoms/Header'
+import Linkto from '../../../../Atoms/LinkTo'
 
 export default function EditOrDeleteVehicle() {
     const dispatch=useDispatch()
@@ -12,8 +14,16 @@ export default function EditOrDeleteVehicle() {
     },[])
     const {id}=useParams()
     const vehicleData=useSelector(state=>state?.vehicleDataReducer)
-    console.log(Object.values(vehicleData).find(val=>val?.id==id))
+    const vehicle=(Object.values(vehicleData).length&&Object.values(vehicleData)?.find(val=>val?.id==id))
   return (
-    <div></div>
+    <div className='section-content'>
+      <Header heading={`Name:${vehicle?.vehicle_name}`}/>
+      <div className='FillingMessageDiv'>
+                <span className='FillingMessage'>color :{vehicle?.vehicle_color}</span>
+            </div>
+            <Linkto picNeeded={false} linkText="Edit info" />
+            <Linkto  picNeeded={false}  linkText="Delete vehicle" />
+     
+    </div>
   )
 }
