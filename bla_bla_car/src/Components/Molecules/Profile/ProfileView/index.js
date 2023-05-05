@@ -14,6 +14,7 @@ export default function NameAndProfilePicView({ setShowEditPersonalDetails = () 
     useEffect(() => {
         dispatch(gettingProfilePic({}))
         dispatch(getVehicleData({}))
+       
     }, [])
     const StoreData = useSelector(state => state)
 
@@ -35,7 +36,6 @@ export default function NameAndProfilePicView({ setShowEditPersonalDetails = () 
             </div>
             <div className='profileMain'>
                 <h1 className='headingData'>Vehicles</h1>
-
 
                 {Object.values(StoreData?.vehicleDataReducer)?.map(val =>
                     <div>

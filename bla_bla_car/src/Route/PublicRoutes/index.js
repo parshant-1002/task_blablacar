@@ -15,7 +15,8 @@ import ResetPassword from '../../Components/Cells/ResetPassword'
 import Profile from '../../Components/Molecules/Profile'
 import AddOrEditProfilePic from '../../Components/Cells/AddOrEditProfilePic'
 import AddVehicleDetails from '../../Components/Molecules/Profile/ProfileView/AddVehicle'
-import EditOrDeleteVehicle from '../../Components/Molecules/Profile/ProfileView/AddVehicle/EditOrDeleteVehicle'
+import EditOrDeleteVehicle from '../../Components/Molecules/Profile/ProfileView/AddVehicle/EditorDeleteVehicle'
+import UpdateVehicles from '../../Components/Molecules/Profile/ProfileView/AddVehicle/EditorDeleteVehicle/UpdateVehicle'
 
 export default function PublicRoutes() {
     return (
@@ -37,6 +38,7 @@ export default function PublicRoutes() {
             <Route exact path={"/dashboard/profile/picture"} element={<AddOrEditProfilePic />} />
             <Route exact path={"/dashboard/profile/vehicle/:id"} element={<EditOrDeleteVehicle />} />
             <Route exact path={"/dashboard/profile/vehicle/add"} element={<AddVehicleDetails />} />
+           
         </Routes>
 
     )

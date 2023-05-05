@@ -184,6 +184,26 @@ function* getVehicle() {
         const res = yield axios.get(
             BASE_URL + URL_EXTENSIONS.VEHICLE,config
         );
+        console.log(res,"sdkfjghsdjfghsudfgsyudfgsyudf")
+    yield put(setVehicleData(res?.data))
+        yield put(settingLoaderState(false))
+    } catch (error) {
+        yield put(settingLoaderState(false))
+        console.log(error, "error in adding vehicle")
+    }
+}
+
+function* deleteVehicleData(payload) {
+    try {
+       
+        const token =localStorage.getItem("token")
+        const config = {
+            headers: { 'Authorization': token }
+          };
+        yield put(settingLoaderState(true))
+        const res = yield axios.delete(
+            BASE_URL + URL_EXTENSIONS.VEHICLE+`/${payload?.id}`,config
+        );
 
     yield put(setVehicleData(res?.data))
         yield put(settingLoaderState(false))
@@ -193,6 +213,25 @@ function* getVehicle() {
     }
 }
 
+function* updateVehicleDetails(payload) {
+    try {
+       
+        const token =localStorage.getItem("token")
+        const config = {
+            headers: { 'Authorization': token }
+          };
+        yield put(settingLoaderState(true))
+        const res = yield axios.put(
+            BASE_URL + URL_EXTENSIONS.VEHICLE+`/${payload?.id}`,{ vehicle: payload?.payload },config
+        );
+
+    yield put(setVehicleData(res?.data))
+        yield put(settingLoaderState(false))
+    } catch (error) {
+        yield put(settingLoaderState(false))
+        console.log(error, "error in adding vehicle")
+    }
+}
 function* Saga() {
     yield all([
         takeLatest(ACTION_STATES.SIGN_UP, postRegisterData),
@@ -204,7 +243,9 @@ function* Saga() {
         takeLatest(ACTION_STATES.UPLOADING_PROFILE_PIC,uploadingPic),
         takeLatest(ACTION_STATES.GETTING_PROFILE_PIC,gettingProfilePic),
         takeLatest(ACTION_STATES.ADD_VEHICLE_DATA,addVehicle),
-        takeLatest(ACTION_STATES.GET_VEHICLE_DATA,getVehicle)
+        takeLatest(ACTION_STATES.GET_VEHICLE_DATA,getVehicle),
+        takeLatest(ACTION_STATES.DELETE_VEHICLE,deleteVehicleData),
+        takeLatest(ACTION_STATES.UPDATE_VEHICLE,updateVehicleDetails)
     ]);
 }
 export default Saga;
