@@ -15,6 +15,13 @@ export default function PasswordInput() {
     const [validationMessage, setValidationMessage] = useState("")
     const [inputType,setInputType]=useState("password")
     const navigate=useNavigate()
+    const successRegister=(res)=>{
+      navigate("/")
+      console.log(res)
+    }
+    const failedRegister=(res)=>{
+      setValidationMessage(res)
+    }
     const handleSubmit = () => {
       if (!password.trim()) {
         setValidationMessage(VALIDATION_MESSAGES?.PASSWORD?.EMPTY)
@@ -26,8 +33,8 @@ export default function PasswordInput() {
     
       dispatch(registerData?.password(password))
   
-      dispatch(registerData?.signup({...registeredData?.registerReducer,password:password}))
-      navigate("/")}
+      dispatch(registerData?.signup({...registeredData?.registerReducer,password:password},successRegister,failedRegister))
+  }
     }
   return (
     <div className='section-content'>

@@ -12,7 +12,7 @@
     z-index: 60;
 }
 .header-content{
-    width: 1463px;
+    width: 100%;
     display: flex;
 
   
@@ -106,7 +106,7 @@
 .dropDown{
     margin-top: 72px;
     inset: 0px auto 0px 50%;
-    width: 1280px;
+    width: 90%;
     position: fixed;
     transform: translate(-50%, 0px);
 }

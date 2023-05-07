@@ -13,9 +13,11 @@ function* postRegisterData(payload) {
             localStorage.setItem(LOCALSTORAGE_KEY_NAME, (res?.headers?.authorization))
             localStorage.setItem("CurrentUser", JSON.stringify(res?.data?.status?.data))
         }
+        yield(put(payload?.successRegister()))
         yield put(settingLoaderState(false))
     } catch (error) {
         yield put(settingLoaderState(false))
+        yield(put(payload?.failedRegister(error?.response?.data||"server not responding")))
         console.log(error, "errorInRegister")
     }
 }
@@ -34,7 +36,7 @@ function* postLoginData(payload) {
         yield put(settingLoaderState(false))
     } catch (error) {
         yield put(settingLoaderState(false))
-        payload?.failedLogin(error?.response?.data)
+        payload?.failedLogin(error?.response?.data||"server not responding")
     }
 }
 

@@ -31,8 +31,7 @@ export default function CustomInput(
     <div className='section-data'>
       <div className={!validationMessage ? `inputDiv` : `inputDivInvalid`}>
         <input id={inputId} className='Input' onKeyDown={handleKey} type={type} placeholder={placeHolder} value={state} onChange={(e) => { handleChange(e.target.value) }} /><br />
-        {showEyePicture &&(inputType!=="password"? <img className="closePasswordIcon" src={Images.closeEye} alt="" onClick={()=>{setInputType("password")}}/>: <img className="showPasswordIcon" src={Images.openEye} alt="" onClick={()=>{setInputType("text")}} />)}
-            
+        {showEyePicture &&(inputType!=="password"? <img className="closePasswordIcon" src={Images.closeEye} alt="" onClick={()=>{setInputType("password")}}/>: <img className="showPasswordIcon" src={Images.openEye} alt="" onClick={()=>{setInputType("text")}} />)}       
       </div>
     </div>
   )

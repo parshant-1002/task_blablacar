@@ -37,10 +37,12 @@ export const registerData = {
       payload
     }
   },
-  signup: (payload) => {
+  signup: (payload,successRegister,failedRegister) => {
     return {
       type: ACTION_STATES.SIGN_UP,
-      payload
+      payload,
+      successRegister,
+      failedRegister,
     }
   },
 
@@ -51,7 +53,7 @@ export const loginData = {
       type: ACTION_STATES.SIGN_IN,
       payload,
       successLogin,
-      failedLogin
+      failedLogin,  
     }
   }
 }
