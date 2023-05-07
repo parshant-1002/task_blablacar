@@ -17,8 +17,7 @@
     color: rgb(5, 70, 82);
     flex: 1 1 0%;
     font: 400 18px / 20px gt-eesti, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    width: 100%;
-    caret-color: rgb(0, 175, 245);
+  
     padding: 0px 16px;
     height: 56px;
 
@@ -31,7 +30,7 @@
     align-items: center;
     box-sizing: border-box;
     color: rgb(5, 70, 82);
-    background-color: rgb(237, 237, 237);
+    background-color: rgb(255, 255, 255);
     border-radius: 16px;
     box-shadow: transparent 0px 0px 0px 3px;
     transition: box-shadow 200ms ease-out 0s;
@@ -45,7 +44,7 @@
     align-items: center;
     box-sizing: border-box;
     color: rgb(5, 70, 82);
-    background-color: rgb(237, 237, 237);
+    background-color: rgb(255, 255, 255);
     border-radius: 16px;
     box-shadow: transparent 0px 0px 0px 3px;
     transition: box-shadow 200ms ease-out 0s;
@@ -54,3 +53,22 @@
 }
 
 
+.showPasswordIcon{
+  
+        height:25px;
+        width:25px;
+
+        padding-right: 10px;
+        opacity: 50%;
+        cursor: pointer;
+    
+}
+.closePasswordIcon{
+    height:13px;
+    width:18px;
+    content:objectfit;
+    padding-right: 10px;
+    margin-right: 3px;
+    opacity: 50%;
+    cursor: pointer;
+}

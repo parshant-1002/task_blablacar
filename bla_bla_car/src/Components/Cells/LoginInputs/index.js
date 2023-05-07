@@ -10,14 +10,16 @@ import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 import ForgetPassword from '../../Atoms/ForgetPassword'
 import Loader from '../../Atoms/Loader'
+import PasswordInput from '../PasswordInput'
 
 export default function LoginInputs() {
     const dispatch = useDispatch()
     const [email, setEmail] = useState("")
-    const [loader, setLoader] = useState(false)
+ 
     const [password, setPassword] = useState("")
     const [validationMessageEmail, setValidationMessageEmail] = useState()
     const [validationMessagePassword, setValidationMessagePassword] = useState()
+    const [inputType,setInputType]=useState("password")
     const navigate=useNavigate()
 
     const successLogin=()=>{
@@ -51,9 +53,10 @@ export default function LoginInputs() {
         <>
                <Header heading={STRINGS?.LOGIN_INPUT_HEADING} />
             <div className='section'>
-                <CustomInput state={email} setState={setEmail} placeHolder="email" validationMessage={validationMessageEmail} setValidationMessage={setValidationMessageEmail} handleSubmit={handleSubmit} />
+                <CustomInput state={email} setState={setEmail}  placeHolder="email" validationMessage={validationMessageEmail} setValidationMessage={setValidationMessageEmail} handleSubmit={handleSubmit} />
                 <label className='validationMessage'>{validationMessageEmail}</label>
-                <CustomInput type={"password"} state={password} setState={setPassword} placeHolder="password" validationMessage={validationMessagePassword} setValidationMessage={setValidationMessagePassword} handleSubmit={handleSubmit} />
+                <CustomInput type={inputType} showEyePicture={true} state={password}       inputType={inputType} setInputType={setInputType} setState={setPassword} placeHolder="password" validationMessage={validationMessagePassword} setValidationMessage={setValidationMessagePassword} handleSubmit={handleSubmit} />
+                
                 <label className='validationMessage'>{validationMessagePassword}</label>
             </div>
             <ForgetPassword/>

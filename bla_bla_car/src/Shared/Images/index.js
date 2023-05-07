@@ -8,7 +8,8 @@ import cross from "../../assets/cross.svg"
 import calender from "../../assets/calender.svg"
 import userProfileIcon from "../../assets/userProfileIcon.svg"
 import additionIcon from "../../assets/addition.svg"
-
+import closeEye from "../../assets/closeEye.png"
+import openEye from "../../assets/openEye.png"
 export  const Images={
     rightArrow,
     blablacarLogo,
@@ -19,6 +20,8 @@ export  const Images={
     cross,
     calender,
     userProfileIcon,
-    additionIcon
+    additionIcon,
+    openEye,
+    closeEye
 }
 

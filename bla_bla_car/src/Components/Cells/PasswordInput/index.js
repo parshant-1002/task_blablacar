@@ -13,7 +13,7 @@ export default function PasswordInput() {
   const registeredData=useSelector(state=>state)
     const [password, setPassword] = useState("")
     const [validationMessage, setValidationMessage] = useState("")
-   
+    const [inputType,setInputType]=useState("password")
     const navigate=useNavigate()
     const handleSubmit = () => {
       if (!password.trim()) {
@@ -35,7 +35,9 @@ export default function PasswordInput() {
      <div className='passwordFillingMessageDiv'>
   <span className='passwordFillingMessage'>It must have at least 8 characters, 1 letter, 1 number and 1 special character.</span>
      </div>
-     <CustomInput type="password" state={password} setState={setPassword} placeHolder='password' validationMessage={validationMessage} setValidationMessage={setValidationMessage}/>
+     <CustomInput type={inputType} showEyePicture={true} state={password} setState={setPassword} placeHolder='password' validationMessage={validationMessage} setValidationMessage={setValidationMessage} 
+      inputType={inputType} setInputType={setInputType}
+     />
      <label className='validationMessage'>{validationMessage}</label>
      <ContinueButton handleSubmit={handleSubmit}/>
     </div>
