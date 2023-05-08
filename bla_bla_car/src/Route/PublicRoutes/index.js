@@ -16,7 +16,7 @@ import Profile from '../../Components/Molecules/Profile'
 import AddOrEditProfilePic from '../../Components/Cells/AddOrEditProfilePic'
 import AddVehicleDetails from '../../Components/Molecules/Profile/ProfileView/AddVehicle'
 import EditOrDeleteVehicle from '../../Components/Molecules/Profile/ProfileView/AddVehicle/EditorDeleteVehicle'
-import UpdateVehicles from '../../Components/Molecules/Profile/ProfileView/AddVehicle/EditorDeleteVehicle/UpdateVehicle'
+
 
 export default function PublicRoutes() {
     return (
@@ -28,8 +28,8 @@ export default function PublicRoutes() {
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/register/name" element={<NameInput />} />
             <Route exact path="/register/birthDate" element={<BirthDateInput />} />
-            <Route exact path="/register/gender" element={<NamePrefixSelector />} />
-            <Route exact path="/register/password" element={<PasswordInput />} />
+            <Route exact path={"/register/gender"} element={<NamePrefixSelector />} />
+            <Route exact path={"/register/password"} element={<PasswordInput />} />
             <Route exaxt path={"/search-car-sharing"} element={<Search />} />
             <Route exaxt path={"/login/email"} element={<LoginInputs />} />
             <Route exact path={"/login/forgot"} element={<LoginForgetPassword />} />
