@@ -8,8 +8,7 @@ import { PUBLIC_ROUTES } from "./PublicRoute";
 import { PRIVATE_ROUTES } from "./PrivateRoutes";
 
 
-import RenderRoutes from "./RenderRoutes";
-import Home from "../View/Home";
+
 
 
 
@@ -44,7 +43,7 @@ const AuthenticatedRoutes = () => {
 };
 
 const RootRouter = () => {
-  const token =JSON.parse(localStorage.getItem("token"))
+  const token =(localStorage.getItem("token"))
 
 
   return (

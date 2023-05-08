@@ -3,9 +3,9 @@ import CustomLinkListCreator from '../../../Atoms/CustomLinkListCreator'
 import Linkto from '../../../Atoms/LinkTo'
 import "../styles.css"
 import PathTo from '../../../Atoms/PathTo'
-import EditPersonalDetails from './EditPersonalDetails'
+
 import { useDispatch, useSelector } from 'react-redux'
-import { getVehicleData, gettingProfilePic } from '../../../../Redux/Actions'
+import { getVehicleData} from '../../../../Redux/Actions'
 
 export default function NameAndProfilePicView({ setShowEditPersonalDetails = () => { }, setShowMiniBio = () => { },setShowEmailVerificationModal }) {
     
@@ -28,7 +28,7 @@ export default function NameAndProfilePicView({ setShowEditPersonalDetails = () 
             </div>
             <div className='profileMain'>
                 <h1 className='headingData'>Verify Your Profile</h1>
-                <PathTo linkText={`Confirm email ${userData?.email}`}  setShow={setShowEmailVerificationModal}/>
+                <PathTo linkText={`Confirm email ${userData?.email}`} setShow={setShowEmailVerificationModal}/>
             </div>
             <div className='profileMain'>
                 <h1 className='headingData'>About You</h1>

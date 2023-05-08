@@ -10,7 +10,8 @@ export const STRINGS={
     FORGOT_PASSWORD:"What's your email? Check your inbox for a link to create a new password.",
     RESET_PASSWORD:"Reset Password",
     MINI_BIO_HEADING:"What would you like other members to know about you?",
-    ADDING_VEHICLE_DETAILS:"What is your license plate number?"
+    ADDING_VEHICLE_DETAILS:"What is your license plate number?",
+    VERIFY_EMAIL:"Click to verify Email"
 }
 
 

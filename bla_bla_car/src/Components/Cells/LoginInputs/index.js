@@ -4,7 +4,7 @@ import { STRINGS, VALIDATION_MESSAGES } from '../../../Shared/Constants'
 import CustomInput from '../../Atoms/CustomInput'
 import ContinueButton from '../../Atoms/ContinueButton'
 import { isValidEmail, isValidPassword } from '../../../Shared/Utilities'
-import { loginData, registerData } from '../../../Redux/Actions'
+import { gettingProfilePic, loginData, registerData } from '../../../Redux/Actions'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
@@ -23,6 +23,7 @@ export default function LoginInputs() {
     const navigate=useNavigate()
 
     const successLogin=()=>{
+        dispatch(gettingProfilePic({}))
         navigate("/")
     }
     const failedLogin=(res)=>{

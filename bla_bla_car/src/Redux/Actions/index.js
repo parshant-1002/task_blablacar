@@ -37,7 +37,7 @@ export const registerData = {
       payload
     }
   },
-  signup: (payload,successRegister,failedRegister) => {
+  signup: (payload, successRegister, failedRegister) => {
     return {
       type: ACTION_STATES.SIGN_UP,
       payload,
@@ -48,12 +48,12 @@ export const registerData = {
 
 }
 export const loginData = {
-  signin: (payload,successLogin,failedLogin) => {
+  signin: (payload, successLogin, failedLogin) => {
     return {
       type: ACTION_STATES.SIGN_IN,
       payload,
       successLogin,
-      failedLogin,  
+      failedLogin,
     }
   }
 }
@@ -86,7 +86,7 @@ export const settingLoaderState = (payload) => {
   }
 }
 
-export const uploadProfilePic = (payload,successImageUpload) => {
+export const uploadProfilePic = (payload, successImageUpload) => {
   return {
     type: ACTION_STATES.UPLOADING_PROFILE_PIC,
     payload,
@@ -112,7 +112,7 @@ export const gettingProfilePic = (payload) => {
     payload
   }
 }
-export const addVehicleData = (payload,navigateToProfile) => {
+export const addVehicleData = (payload, navigateToProfile) => {
   return {
     type: ACTION_STATES.ADD_VEHICLE_DATA,
     payload,
@@ -132,25 +132,45 @@ export const getVehicleData = () => {
   }
 }
 export const setVehicleData = (payload) => {
-  console.log(payload,"res in action")
+  console.log(payload, "res in action")
   return {
     type: ACTION_STATES.SET_VEHICLE_DATA,
     payload
   }
 }
 
-export const deleteVehicle = (id,navigateToProfile) => {
+export const deleteVehicle = (id, navigateToProfile) => {
   return {
     type: ACTION_STATES?.DELETE_VEHICLE,
     id,
     navigateToProfile
   }
 }
-export const updateVehicleData = (payload,id,navigateToProfile) => {
+export const updateVehicleData = (payload, id, navigateToProfile) => {
   return {
     type: ACTION_STATES.UPDATE_VEHICLE,
     payload,
-    id,    
+    id,
     navigateToProfile
   }
 }
+
+export const sendEmailVerificationLink = (payload, succesSend, failedSend) => {
+
+  return {
+    type: ACTION_STATES.SEND_EMAIL_VERIFICATION_LINK,
+    payload,
+    succesSend,
+    failedSend
+  }
+}
+
+export const sendEmailVerificationstatus = (payload, id) => {
+
+  return {
+    type: ACTION_STATES.SEND_EMAIL_VERIFICATION_STATUS,
+    payload,
+    id
+  }
+}
+
