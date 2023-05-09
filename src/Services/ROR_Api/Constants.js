@@ -1,4 +1,4 @@
-export const BASE_URL="https://4f27-112-196-113-2.ngrok-free.app"
+export const BASE_URL="https://4f90-112-196-113-2.in.ngrok.io"
 export const URL_EXTENSIONS={
     SIGN_UP:"/users",
     SIGN_IN:"/users/sign_in",
@@ -8,3 +8,5 @@ export const URL_EXTENSIONS={
     EMAIL_VERIFICATION:"/account_activations",
 
 }
+
+export const MAP_API_KEY="AIzaSyDUzn63K64-sXadyIwRJExCfMaicagwGq4"

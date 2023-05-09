@@ -11,7 +11,13 @@ export const STRINGS={
     RESET_PASSWORD:"Reset Password",
     MINI_BIO_HEADING:"What would you like other members to know about you?",
     ADDING_VEHICLE_DETAILS:"What is your license plate number?",
-    VERIFY_EMAIL:"Click to verify Email"
+    VERIFY_EMAIL:"Click to verify Email",
+    PUBLISH_RIDE:"Become a BlaBlaCar driver and save on travel costs by sharing your ride with passengers.",
+    PICKUP:"Pick-up",
+    PICKUP_FROM_MAP:"Where would you like to pick up passengers?",
+    DROPOF:"Drop-off",
+    DROPOF_LOCATION_MAP:"Where would you like to drop off passengers?",
+    SELECT_ROUTE:"What is your route?"
 }
 
 
@@ -81,3 +87,10 @@ export const VALIDATION_MESSAGES={
 
 
 export const LOCALSTORAGE_KEY_NAME="token"
+
+
+
+export const BUTTONTEXT={
+    PUBLISH_RIDE:"Publish Ride",
+    CONTINUE:"Continue"
+}

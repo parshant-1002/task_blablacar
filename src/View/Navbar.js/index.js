@@ -3,7 +3,7 @@ import "./styles.css"
 import { Images } from '../../Shared/Images'
 import { useLocation, useNavigate } from 'react-router-dom'
 import DropDownListViewer from '../../Components/Atoms/DropDownListViewer'
-import NavContent from './DropDownButton'
+import NavContent from './NavContent'
 
 import Linkto from '../../Components/Atoms/LinkTo'
 export default function Navbar() {
@@ -32,7 +32,7 @@ export default function Navbar() {
                         <img src={Images.blablacarLogo} alt="BlaBlaCar" onClick={() => { navigate("/") }}></img>
                     </span>
                 </div>
-                    {(!currentPath?.pathname?.includes("register")||token) && <Linkto linkText={"Publish a ride"}/>}
+                    {(!currentPath?.pathname?.includes("register")||token) && <Linkto linkText={"Publish a ride"} route={"/offer-seats"}/>}
                     {(!currentPath?.pathname?.includes("register")||token) && <NavContent handleDropDownIconPosition={handleDropDownIconPosition} dropDownIconPosition={dropDownIconPosition} />}
                     {dropDownListShow && <DropDownListViewer dropDownListData={!token ? dropDownListDataForGuest : dropDownListDataForUser} setDropDownListShow={setDropDownListShow} setDropDownIconPosition={setDropDownIconPosition} />}
                            </div>

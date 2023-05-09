@@ -16,7 +16,8 @@ const DateInput = ({validationMessage="" ,startDate,setStartDate}) => {
     placeholderText="Select a weekday"
     className="singup-date-picker"
     selected={startDate} onChange={(date) => setStartDate(date)} 
-     minDate={'01-01-1960'}/>
+     minDate={'01-01-1960'}
+     maxDate={new Date()}/>
     </div>
         <br />
     </div>

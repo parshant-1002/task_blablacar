@@ -1,9 +1,11 @@
 import AddOrEditProfilePic from "../Components/Cells/AddOrEditProfilePic";
-import VerifyEmail from "../Components/Cells/VerifyEmail";
+import PickupFromMap from "../Components/Molecules/SelectLocationFromMap";
 import Profile from "../Components/Molecules/Profile";
 import AddVehicleDetails from "../Components/Molecules/Profile/ProfileView/AddVehicle";
 import EditOrDeleteVehicle from "../Components/Molecules/Profile/ProfileView/AddVehicle/EditorDeleteVehicle";
-import Search from "../Components/Molecules/Search";
+import DropOf from "../Components/Molecules/Publish ride/DropOf";
+import Pickup from "../Components/Molecules/Publish ride/Pickup";
+import SelectRoute from "../Components/Molecules/Publish ride/SelectRoute/SelectRoute";
 
 export const PRIVATE_ROUTES = [
   {
@@ -23,5 +25,22 @@ export const PRIVATE_ROUTES = [
     path: "/dashboard/profile/vehicle/add",
     component: <AddVehicleDetails />,
   },
- 
+  {
+    path: "/offer-seats/departure",
+    component: <Pickup />,
+  },
+  {
+    path: "/offer-seats/departure/precise/:coordinates/:type",
+    component: <PickupFromMap />,
+  },
+  {
+    path: "/offer-seats/arrival",
+    component: <DropOf />,
+  },
+  {
+    path: "/offer-seats/choose-your-route",
+    component: <SelectRoute />,
+  },
+
+  
 ];

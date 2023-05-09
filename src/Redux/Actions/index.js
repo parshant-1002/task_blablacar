@@ -192,3 +192,20 @@ export const setUserDetails = (payload) => {
    
   }
 }
+
+export const setPickLocation = (payload) => {
+ 
+  return {
+    type: ACTION_STATES.SET_PICK_LOCATION,
+    payload
+   
+  }
+}
+export const setDropLocation = (payload) => {
+
+  return {
+    type: ACTION_STATES.SET_DROP_LOCATION,
+    payload
+   
+  }
+}

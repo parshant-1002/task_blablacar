@@ -1,0 +1,12 @@
+.routeDistance{
+      background-color: white;
+        border: 1px solid black;
+        border-radius: 5px;
+        padding: 5px;
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width:40%
+     
+}

@@ -9,9 +9,9 @@ function* postRegisterData(payload) {
     try {
         yield put(settingLoaderState(true))
         const res = yield axios.post(BASE_URL + URL_EXTENSIONS.SIGN_UP, { user: payload?.payload });
-        
+        console.log(res?.data?.status?.data,"registerResponse")
         localStorage.setItem(LOCALSTORAGE_KEY_NAME, (res?.headers?.authorization))
-        localStorage.setItem("CurrentUser", JSON.stringify(res?.data?.data))
+        localStorage.setItem("CurrentUser", JSON.stringify(res?.data?.status?.data))
 
         yield (put(payload?.successRegister()))
         yield put(settingLoaderState(false))
@@ -29,6 +29,7 @@ function* postLoginData(payload) {
             BASE_URL + URL_EXTENSIONS.SIGN_IN, { user: payload?.payload }
         );
         payload?.successLogin()
+        console.log(res,"loginResponse")
         localStorage.setItem(LOCALSTORAGE_KEY_NAME, (res?.headers?.authorization))
         localStorage.setItem("CurrentUser", JSON.stringify(res?.data?.status?.data))
         yield put(settingLoaderState(false))
@@ -261,7 +262,7 @@ function* sendingEmailVerificationStatus(payload) {
 
 function* updatedUserDetails() {
     try {
-        console.log("called .......................")
+   
         const token = localStorage.getItem("token")
         const config = {
             headers: { 'Authorization': token }
@@ -270,9 +271,9 @@ function* updatedUserDetails() {
        const res= yield axios.get(
             BASE_URL + URL_EXTENSIONS.SIGN_UP,config
         );
-        localStorage.setItem("CurrentUser", JSON.stringify(res?.data?.user))
-        console.log(res?.data?.user,"in reducer saga")
-        yield put(setUserDetails(res?.data?.user))
+        console.log(res?.data,"in reducer saga")
+        localStorage.setItem("CurrentUser", JSON.stringify(res?.data?.users))
+        yield put(setUserDetails(res?.data?.status?.data))
         yield put(settingLoaderState(false))
     } catch (error) {
         yield put(settingLoaderState(false))
