@@ -8,8 +8,10 @@ const containerStyle = {
 };
 
 const MapRouteShow = ({ coordinates ,setPaths}) => {
-  const [directions, setDirections] = useState(null);
-  const [distance, setDistance] = useState(null);
+  const [directionsWithToll, setDirectionsWithToll] = useState([]);
+  const [directionsWithoutToll, setDirectionsWithoutToll] = useState(null);
+  const [distanceWithToll, setDistanceWithToll] = useState(null);
+  const [distanceWithoutToll, setDistanceWithoutToll] = useState(null);
   const [map, setMap] = useState(null);
 
   const origin = { lat: coordinates?.pickUpLocation?.latitude, lng: coordinates?.pickUpLocation?.longitude } 
@@ -20,12 +22,20 @@ const MapRouteShow = ({ coordinates ,setPaths}) => {
     googleMapsApiKey: MAP_API_KEY,
   });
 
-  const directionsCallback = (response) => {
+  const directionsCallbackForToll = (response) => {
     if (response !== null) {
         console.log(response,"response")
-      setDirections(response);
-      setPaths([ {path:response?.routes[0]?.summary,distance:response.routes[0].legs[0].distance.text,duration:response.routes[0].legs[0].duration.text}])
-      setDistance(response.routes[0].legs[0].distance.text);
+        setDirectionsWithToll(response);
+      setPaths((x=>[...x, {path:response?.routes[0]?.summary,distance:response.routes[0].legs[0].distance.text,duration:response.routes[0].legs[0].duration.text}]))
+      setDistanceWithToll(response.routes[0].legs[0].distance.text);
+    }
+  };
+  const directionsCallbackForNoToll = (response) => {
+    if (response !== null) {
+        console.log(response,"response")
+        setDirectionsWithoutToll(response);
+      setPaths((x=>[...x, {path:response?.routes[0]?.summary,distance:response.routes[0].legs[0].distance.text,duration:response.routes[0].legs[0].duration.text}]))
+      setDistanceWithoutToll(response.routes[0].legs[0].distance.text);
     }
   };
     const onLoad = (map) => {
@@ -39,8 +49,17 @@ const MapRouteShow = ({ coordinates ,setPaths}) => {
         travelMode: window.google.maps.TravelMode.DRIVING,
         avoidTolls: true
       },
-      directionsCallback
+      directionsCallbackForToll
     );
+    directionsService.route(
+        {
+          origin,
+          destination,
+          travelMode: window.google.maps.TravelMode.DRIVING,
+          avoidTolls: false
+        },
+        directionsCallbackForNoToll
+      );
 
     directionsRenderer.setMap(map);
   };
@@ -60,11 +79,11 @@ const MapRouteShow = ({ coordinates ,setPaths}) => {
       onLoad={onLoad}
       onUnmount={onUnmount}
       options={{
-        mapTypeId: 'terrain'
+        mapTypeId: 'roadmap'
       }}
     >
 
-      {directions && <DirectionsRenderer directions={directions} 
+      {directionsWithToll && <DirectionsRenderer directions={directionsWithToll} 
       options={{
         map: map,
         polylineOptions: {
@@ -78,9 +97,28 @@ const MapRouteShow = ({ coordinates ,setPaths}) => {
       }}
       
       />}
-      {distance && (
+       {directionsWithoutToll && <DirectionsRenderer directions={directionsWithoutToll} 
+      options={{
+        map: map,
+        polylineOptions: {
+          strokeColor:  "grey" ,
+          strokeOpacity: 1,
+          strokeWeight: 6
+        },
+        markerOptions: {
+          visible: true
+        }
+      }}
+      
+      />}
+      {distanceWithToll && (
         <div className='routeDistance' >
-          Distance: {distance}
+          DistanceToll: {distanceWithToll}
+        </div>
+      )}
+       {distanceWithoutToll && (
+        <div className='routeDistance' >
+          DistanceNoToll: {distanceWithoutToll}
         </div>
       )}
     </GoogleMap>
