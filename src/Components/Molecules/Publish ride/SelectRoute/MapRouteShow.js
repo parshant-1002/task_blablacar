@@ -37,6 +37,7 @@ const MapRouteShow = ({ coordinates ,setPaths}) => {
         origin,
         destination,
         travelMode: window.google.maps.TravelMode.DRIVING,
+        avoidTolls: true
       },
       directionsCallback
     );
@@ -58,9 +59,25 @@ const MapRouteShow = ({ coordinates ,setPaths}) => {
       zoom={15}
       onLoad={onLoad}
       onUnmount={onUnmount}
+      options={{
+        mapTypeId: 'terrain'
+      }}
     >
 
-      {directions && <DirectionsRenderer directions={directions} />}
+      {directions && <DirectionsRenderer directions={directions} 
+      options={{
+        map: map,
+        polylineOptions: {
+          strokeColor:  "#00BFFF" ,
+          strokeOpacity: 1,
+          strokeWeight: 6
+        },
+        markerOptions: {
+          visible: true
+        }
+      }}
+      
+      />}
       {distance && (
         <div className='routeDistance' >
           Distance: {distance}
