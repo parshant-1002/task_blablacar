@@ -7,6 +7,8 @@ import DropOf from "../Components/Molecules/Publish ride/DropOf";
 import Pickup from "../Components/Molecules/Publish ride/Pickup";
 import SelectRoute from "../Components/Molecules/Publish ride/SelectRoute/SelectRoute";
 import AddStop from "../Components/Cells/AddStop.js";
+import DateOfRide from "../Components/Cells/DateOfRide";
+import RideTime from "../Components/Cells/RideTime";
 
 export const PRIVATE_ROUTES = [
   {
@@ -45,6 +47,14 @@ export const PRIVATE_ROUTES = [
   {
     path: "/offer-seats/declared-stopovers",
     component: <AddStop />,
+  },
+  {
+    path: "/offer-seats/departure-date",
+    component: <DateOfRide />,
+  },
+  {
+    path: "/offer-seats/departure-date/time",
+    component: <RideTime />,
   },
   
   

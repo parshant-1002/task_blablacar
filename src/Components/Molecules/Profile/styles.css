@@ -134,3 +134,14 @@ margin-left: 10%;
 .statusSuccessMessage{
     color:green
 }
+.small-input {
+    -moz-appearance: textfield;
+  }
+  .small-input::-webkit-inner-spin-button {
+    display: none;
+  }
+  .small-input::-webkit-outer-spin-button,
+  .small-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }

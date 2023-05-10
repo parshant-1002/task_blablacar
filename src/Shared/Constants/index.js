@@ -18,7 +18,9 @@ export const STRINGS={
     DROPOF:"Drop-off",
     DROPOF_LOCATION_MAP:"Where would you like to drop off passengers?",
     SELECT_ROUTE:"What is your route?",
-    ADD_STOP:"Add stopovers to get more passengers"
+    ADD_STOP:"Add stopovers to get more passengers",
+    WHEN_GOING:"When are you going?",
+    ON_WHAT_TIME:"At what time will you pick passengers up?"
 }
 
 
@@ -84,6 +86,12 @@ export const VALIDATION_MESSAGES={
         EMPTY:"*VehicleModelYear Required",
       
     },
+    DATE:{
+        NOT_VALID:"Enter Valid Date",   
+        EMPTY:"*Date Required",
+      
+    },
+
 }
 
 

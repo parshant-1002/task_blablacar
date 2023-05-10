@@ -6,8 +6,9 @@ import "./styles.css"
 import MapContainer, { WrappedMap } from '../Map'
 import { useNavigate, useParams } from 'react-router-dom'
 import ContinueButton from '../../Atoms/ContinueButton'
-import { setDropLocation, setPickLocation } from '../../../Redux/Actions'
+import { setPickLocation } from '../../../Redux/Actions/PublishRideAction'
 import { useDispatch } from 'react-redux'
+import { setDropLocation } from '../../../Redux/Actions/PublishRideAction'
 export default function PickupFromMap() {
     const { coordinates, type } = useParams()
     const [location, setLocation] = useState()

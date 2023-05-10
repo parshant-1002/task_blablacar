@@ -82,8 +82,9 @@ export default function UpdateVehicles({show,setShow=()=>{},id,vehicle}) {
         <ValidationText message={vehicleTypeValidationMessage} />
         <CustomInput placeHolder='vehicle_color' state={vehicleColor} setState={setVehicleColor} validationMessage={vehicleColorValidationMessage} setValidationMessage={setVehicleColorValidationMessage} />
         <ValidationText message={vehicleColorValidationMessage} />
-        <CustomInput type={"number"} placeHolder='vehicle_model_year' state={vehicleModelYear} setState={setVehicleModelYear} validationMessage={vehicleModelYearValidationMessage} setValidationMessage={setVehicleModelYearValidationMessage} />
+        <CustomInput pattern="[0-9]*" type={"number"}  onkeypress="preventNonNumericalInput(event)" placeHolder='vehicle_model_year' state={vehicleModelYear} setState={setVehicleModelYear} validationMessage={vehicleModelYearValidationMessage} setValidationMessage={setVehicleModelYearValidationMessage} />
         <ValidationText message={vehicleModelYearValidationMessage} />
+   
       </div>
       <ContinueButton ButtonText="Update" handleSubmit={handleSubmit} />
       </ModalComponent>

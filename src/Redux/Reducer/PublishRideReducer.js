@@ -3,7 +3,8 @@ import { ACTION_STATES } from "../ActionStates"
 const initialStateForPublishRide = {
     pickUpLocation: {},
     dropOfLocation: {},
-    selectedRouteData:{}
+    selectedRouteData: {},
+    rideStartDate: ""
 }
 export const publishRideReducer = (state = initialStateForPublishRide, action) => {
     switch (action?.type) {
@@ -15,10 +16,14 @@ export const publishRideReducer = (state = initialStateForPublishRide, action) =
             return {
                 ...state, dropOfLocation: action?.payload
             }
-            case ACTION_STATES.SETSELECTED_ROUTE_DATA:
-                return {
-                    ...state, selectedRouteData: action?.payload
-                }
+        case ACTION_STATES.SETSELECTED_ROUTE_DATA:
+            return {
+                ...state, selectedRouteData: action?.payload
+            }
+        case ACTION_STATES.ADD_RIDE_DATE:
+            return {
+                ...state, rideStartDate: action?.payload
+            }
         default:
             return state
     }

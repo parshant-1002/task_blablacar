@@ -74,8 +74,9 @@ const navigateToProfile=(res)=>{
         <ValidationText message={vehicleTypeValidationMessage} />
         <CustomInput placeHolder='vehicle_color' state={vehicleColor} setState={setVehicleColor} validationMessage={vehicleColorValidationMessage} setValidationMessage={setVehicleColorValidationMessage} />
         <ValidationText message={vehicleColorValidationMessage} />
-        <CustomInput type={"number"} placeHolder='vehicle_model_year' state={vehicleModelYear} setState={setVehicleModelYear} validationMessage={vehicleModelYearValidationMessage} setValidationMessage={setVehicleModelYearValidationMessage} />
+        <CustomInput type={"number"} pattern="[0-9]*"  onkeypress="preventNonNumericalInput(event)" placeHolder='vehicle_model_year' state={vehicleModelYear} setState={setVehicleModelYear} validationMessage={vehicleModelYearValidationMessage} setValidationMessage={setVehicleModelYearValidationMessage} />
         <ValidationText message={vehicleModelYearValidationMessage} />
+      
       </div>
       <ContinueButton ButtonText="save" handleSubmit={handleSubmit} />
     </div>

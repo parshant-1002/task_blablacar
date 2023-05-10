@@ -272,7 +272,7 @@ function* updatedUserDetails() {
             BASE_URL + URL_EXTENSIONS.SIGN_UP,config
         );
         console.log(res?.data,"in reducer saga")
-        localStorage.setItem("CurrentUser", JSON.stringify(res?.data?.users))
+        localStorage.setItem("CurrentUser", JSON.stringify(res?.data?.status?.data))
         yield put(setUserDetails(res?.data?.status?.data))
         yield put(settingLoaderState(false))
     } catch (error) {

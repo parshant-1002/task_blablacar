@@ -6,7 +6,7 @@ import ContinueButton from '../../../Atoms/ContinueButton'
 import MapRouteShow from './MapRouteShow'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { setSelectedRouteData } from '../../../../Redux/Actions'
+import { setSelectedRouteData } from '../../../../Redux/Actions/PublishRideAction'
 
 
 export default function SelectRoute() {

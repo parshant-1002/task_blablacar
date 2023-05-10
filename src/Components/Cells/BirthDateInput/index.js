@@ -14,7 +14,7 @@ export default function BirthDateInput() {
   const navigate = useNavigate()
   const handleSubmit = () => {
 
-    dispatch(registerData?.date(startDate.toLocaleString().split(",")[0]))
+    dispatch(registerData?.date(startDate.toLocaleDateString()))
     navigate("/register/gender")
   }
   return (
