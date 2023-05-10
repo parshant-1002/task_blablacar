@@ -15,20 +15,22 @@ export default function PickupFromMap() {
     const navigate = useNavigate()
 
 
-   const dispatch=useDispatch()
+    const dispatch = useDispatch()
     const handleSubmit = () => {
-      
+
         if (type === "pickUp") {
             navigate("/offer-seats/arrival")
             dispatch(setPickLocation(location))
         }
-        else if(type === "DropOf"){
-            
+        else if (type === "DropOf") {
             navigate("/offer-seats/choose-your-route")
             dispatch(setDropLocation(location))
         }
     }
 
+    useEffect(() => {
+        if (!JSON.parse(coordinates)?.cities) { navigate("/offer-seats/departure") }
+    }, [])
 
     const getLocationName = async (latitude, longitude, apiKey) => {
         try {
@@ -37,7 +39,7 @@ export default function PickupFromMap() {
             const data = await response.json();
             const address = data?.results[0]?.formatted_address;
             address && setShowButton(true)
-            setLocation({address,latitude,longitude})
+            setLocation({ address, latitude, longitude })
             return address;
         }
         catch (err) {
@@ -48,15 +50,14 @@ export default function PickupFromMap() {
     return (
         <div className='pickUpMapContainer'>
             <div className='inputLocationData'>
-                 
                 <Header heading={type === "pickUp" ? STRINGS.PICKUP_FROM_MAP : STRINGS.DROPOF_LOCATION_MAP} />
                 <CustomInput state={location?.address ? location?.address : JSON.parse(coordinates)?.cities} />
                 {showButton && <ContinueButton ButtonText={BUTTONTEXT.CONTINUE} handleSubmit={handleSubmit} />}
             </div>
             <div className='mapFrame'>
-
-                <div className='frameContent'>  < MapContainer coordinates={coordinates} getCityName={getLocationName} /></div>
-
+                <div className='frameContent'>
+                    < MapContainer coordinates={coordinates} getCityName={getLocationName} />
+                </div>
             </div>
         </div>
     )

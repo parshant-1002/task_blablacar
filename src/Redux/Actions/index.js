@@ -209,3 +209,11 @@ export const setDropLocation = (payload) => {
    
   }
 }
+export const setSelectedRouteData = (payload) => {
+
+  return {
+    type: ACTION_STATES.SETSELECTED_ROUTE_DATA,
+    payload
+   
+  }
+}

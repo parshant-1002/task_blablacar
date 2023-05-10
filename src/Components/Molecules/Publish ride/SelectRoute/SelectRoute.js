@@ -3,33 +3,43 @@ import Header from '../../../Atoms/Header'
 import { BUTTONTEXT, STRINGS } from '../../../../Shared/Constants'
 import CustomInput from '../../../Atoms/CustomInput'
 import ContinueButton from '../../../Atoms/ContinueButton'
-import MapContainer from '../../Map'
 import MapRouteShow from './MapRouteShow'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { setSelectedRouteData } from '../../../../Redux/Actions'
+
 
 export default function SelectRoute() {
   const coordinates = useSelector(state => state?.publishRideReducer)
+  const [selectedDirection,setSelectedDirection]=useState()
   const [paths, setPaths] = useState([])
+  const dispatch=useDispatch()
+ const navigate=useNavigate()
 
-  const handleSubmit = () => { }
+ 
+  const handleSubmit = (val) => {
+    navigate("/offer-seats/declared-stopovers")
+    dispatch(setSelectedRouteData(val))
+   }
   return (
     <div className='pickUpMapContainer'>
       <div className='inputLocationData'>
 
         <Header heading={STRINGS.SELECT_ROUTE} />
-        {paths.map(val =>
-          <ul>
+        {paths.map((val,i) =>
+          <ul className={val?.directions?.request?.avoidTolls?`TollRoutes`:`NoTollRoutes`} onClick={()=>handleSubmit(val)} >
+   
             <div>
-              {val.duration}
+              {val.duration}-{val?.directions?.request?.avoidTolls?"Toll":"NoToll"}
             </div>
             {val.distance}-{val.path}
           </ul>
         )}
-        <ContinueButton ButtonText={BUTTONTEXT.CONTINUE} handleSubmit={handleSubmit} />
+  
       </div>
       <div className='mapFrame'>
 
-        <div className='frameContent'>  < MapRouteShow coordinates={coordinates} setPaths={setPaths} /></div>
+        <div className='frameContent'>  < MapRouteShow selectedDirection={selectedDirection} coordinates={coordinates} setPaths={setPaths} /></div>
 
       </div>
     </div>

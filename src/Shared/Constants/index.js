@@ -17,7 +17,8 @@ export const STRINGS={
     PICKUP_FROM_MAP:"Where would you like to pick up passengers?",
     DROPOF:"Drop-off",
     DROPOF_LOCATION_MAP:"Where would you like to drop off passengers?",
-    SELECT_ROUTE:"What is your route?"
+    SELECT_ROUTE:"What is your route?",
+    ADD_STOP:"Add stopovers to get more passengers"
 }
 
 

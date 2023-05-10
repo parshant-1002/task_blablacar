@@ -6,6 +6,7 @@ import EditOrDeleteVehicle from "../Components/Molecules/Profile/ProfileView/Add
 import DropOf from "../Components/Molecules/Publish ride/DropOf";
 import Pickup from "../Components/Molecules/Publish ride/Pickup";
 import SelectRoute from "../Components/Molecules/Publish ride/SelectRoute/SelectRoute";
+import AddStop from "../Components/Cells/AddStop.js";
 
 export const PRIVATE_ROUTES = [
   {
@@ -41,6 +42,10 @@ export const PRIVATE_ROUTES = [
     path: "/offer-seats/choose-your-route",
     component: <SelectRoute />,
   },
-
+  {
+    path: "/offer-seats/declared-stopovers",
+    component: <AddStop />,
+  },
+  
   
 ];
