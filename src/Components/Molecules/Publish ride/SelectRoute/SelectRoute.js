@@ -26,16 +26,15 @@ export default function SelectRoute() {
       <div className='inputLocationData'>
 
         <Header heading={STRINGS.SELECT_ROUTE} />
-        {paths.map((val,i) =>
-          <ul className={val?.directions?.request?.avoidTolls?`TollRoutes`:`NoTollRoutes`} onClick={()=>handleSubmit(val)} >
+        {paths.length?paths.map((val,i) =>
+        <ul className={val?.directions?.request?.avoidTolls?`TollRoutes`:`NoTollRoutes`} onClick={()=>handleSubmit(val)} >
    
             <div>
               {val.duration}-{val?.directions?.request?.avoidTolls?"Toll":"NoToll"}
             </div>
             {val.distance}-{val.path}
           </ul>
-        )}
-  
+        ):<label>No Possible Route</label>}
       </div>
       <div className='mapFrame'>
 

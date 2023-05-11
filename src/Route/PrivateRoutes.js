@@ -9,6 +9,8 @@ import SelectRoute from "../Components/Molecules/Publish ride/SelectRoute/Select
 import AddStop from "../Components/Cells/AddStop.js";
 import DateOfRide from "../Components/Cells/DateOfRide";
 import RideTime from "../Components/Cells/RideTime";
+import OfferSeatConfortChoice from "../Components/Cells/OfferSeatConfortChoice";
+import NoOfPassangers from "../Components/Cells/NoOfPassangers";
 
 export const PRIVATE_ROUTES = [
   {
@@ -56,6 +58,16 @@ export const PRIVATE_ROUTES = [
     path: "/offer-seats/departure-date/time",
     component: <RideTime />,
   },
+  {
+    path: "/offer-seats/comfort",
+    component: <OfferSeatConfortChoice />,
+  },
+  {
+    path: "/offer-seats/seats",
+    component: <NoOfPassangers />,
+  },
   
+  
+ 
   
 ];

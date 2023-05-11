@@ -4,7 +4,8 @@ const initialStateForPublishRide = {
     pickUpLocation: {},
     dropOfLocation: {},
     selectedRouteData: {},
-    rideStartDate: ""
+    rideStartDate: "",
+    rideStartTime:""
 }
 export const publishRideReducer = (state = initialStateForPublishRide, action) => {
     switch (action?.type) {
@@ -23,6 +24,10 @@ export const publishRideReducer = (state = initialStateForPublishRide, action) =
         case ACTION_STATES.ADD_RIDE_DATE:
             return {
                 ...state, rideStartDate: action?.payload
+            }
+            case ACTION_STATES.ADD_RIDE_TIME:
+            return {
+                ...state, rideStartTime: action?.payload
             }
         default:
             return state

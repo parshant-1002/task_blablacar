@@ -9,15 +9,15 @@ function* postRegisterData(payload) {
     try {
         yield put(settingLoaderState(true))
         const res = yield axios.post(BASE_URL + URL_EXTENSIONS.SIGN_UP, { user: payload?.payload });
-        console.log(res?.data?.status?.data,"registerResponse")
+        console.log(res?.data?.status?.data, "registerResponse")
         localStorage.setItem(LOCALSTORAGE_KEY_NAME, (res?.headers?.authorization))
         localStorage.setItem("CurrentUser", JSON.stringify(res?.data?.status?.data))
 
-        yield (put(payload?.successRegister()))
+        payload?.successRegister()
         yield put(settingLoaderState(false))
     } catch (error) {
         yield put(settingLoaderState(false))
-        // yield(put(payload?.failedRegister(error?.response?.data||"server not responding")))
+        payload?.failedRegister(error?.response?.data || "server not responding")
         console.log(error, "errorInRegister")
     }
 }
@@ -29,7 +29,7 @@ function* postLoginData(payload) {
             BASE_URL + URL_EXTENSIONS.SIGN_IN, { user: payload?.payload }
         );
         payload?.successLogin()
-        console.log(res,"loginResponse")
+        console.log(res, "loginResponse")
         localStorage.setItem(LOCALSTORAGE_KEY_NAME, (res?.headers?.authorization))
         localStorage.setItem("CurrentUser", JSON.stringify(res?.data?.status?.data))
         yield put(settingLoaderState(false))
@@ -81,6 +81,7 @@ function* uploadingPic(payload) {
         yield put(settingLoaderState(false))
     } catch (error) {
         yield put(settingLoaderState(false))
+        payload?.failImageUpload(error?.response?.data || "server not responding")
         console.log(error, "error in uploading pic")
     }
 }
@@ -229,13 +230,13 @@ function* sendingEmailVerificationLink(payload) {
         };
         yield put(settingLoaderState(true))
         const res = yield axios.post(
-            BASE_URL + URL_EXTENSIONS.EMAIL_VERIFICATION, payload?.payload,config
+            BASE_URL + URL_EXTENSIONS.EMAIL_VERIFICATION, payload?.payload, config
         );
         payload.successSend(res)
         yield put(settingLoaderState(false))
     } catch (error) {
         yield put(settingLoaderState(false))
-        payload.failedSend(error?.response?.data )
+        payload.failedSend(error?.response?.data)
         console.log(error, "error in sending email verification")
     }
 }
@@ -248,13 +249,13 @@ function* sendingEmailVerificationStatus(payload) {
         };
         yield put(settingLoaderState(true))
         yield axios.get(
-            BASE_URL + URL_EXTENSIONS.EMAIL_VERIFICATION+`/${payload?.id}/edit`,config
+            BASE_URL + URL_EXTENSIONS.EMAIL_VERIFICATION + `/${payload?.id}/edit`, config
         );
         payload.successVerified()
         yield put(settingLoaderState(false))
     } catch (error) {
         yield put(settingLoaderState(false))
-      
+
         console.log(error, "error in sending email verification")
     }
 }
@@ -262,22 +263,22 @@ function* sendingEmailVerificationStatus(payload) {
 
 function* updatedUserDetails() {
     try {
-   
+
         const token = localStorage.getItem("token")
         const config = {
             headers: { 'Authorization': token }
         };
         yield put(settingLoaderState(true))
-       const res= yield axios.get(
-            BASE_URL + URL_EXTENSIONS.SIGN_UP,config
+        const res = yield axios.get(
+            BASE_URL + URL_EXTENSIONS.SIGN_UP, config
         );
-        console.log(res?.data,"in reducer saga")
+        console.log(res?.data, "in reducer saga")
         localStorage.setItem("CurrentUser", JSON.stringify(res?.data?.status?.data))
         yield put(setUserDetails(res?.data?.status?.data))
         yield put(settingLoaderState(false))
     } catch (error) {
         yield put(settingLoaderState(false))
-      
+
         console.log(error, "error in sending email verification")
     }
 }
@@ -299,7 +300,7 @@ function* Saga() {
         takeLatest(ACTION_STATES.UPDATE_VEHICLE, updateVehicleDetails),
         takeLatest(ACTION_STATES.SEND_EMAIL_VERIFICATION_LINK, sendingEmailVerificationLink),
         takeLatest(ACTION_STATES.SEND_EMAIL_VERIFICATION_STATUS, sendingEmailVerificationStatus),
-        takeLatest(ACTION_STATES.GETUSERDETAILS,updatedUserDetails)
+        takeLatest(ACTION_STATES.GETUSERDETAILS, updatedUserDetails)
     ]);
 }
 export default Saga;

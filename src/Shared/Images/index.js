@@ -10,6 +10,7 @@ import userProfileIcon from "../../assets/userProfileIcon.svg"
 import additionIcon from "../../assets/addition.svg"
 import closeEye from "../../assets/closeEye.png"
 import openEye from "../../assets/openEye.png"
+import substractionIcon from "../../assets/substraction.svg"
 export  const Images={
     rightArrow,
     blablacarLogo,
@@ -22,6 +23,6 @@ export  const Images={
     userProfileIcon,
     additionIcon,
     openEye,
-    closeEye
+    closeEye,substractionIcon
 }
 

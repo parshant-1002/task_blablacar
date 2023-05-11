@@ -91,6 +91,11 @@ export const VALIDATION_MESSAGES={
         EMPTY:"*Date Required",
       
     },
+    TIME:{
+        NOT_VALID:"Enter Valid Time",   
+        EMPTY:"*Time Required",
+      
+    },
 
 }
 

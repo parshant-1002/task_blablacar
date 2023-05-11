@@ -32,4 +32,11 @@ export const setPickLocation = (payload) => {
      
     }
   }
+  export const addRideTime = (payload) => {
   
+    return {
+      type: ACTION_STATES.ADD_RIDE_TIME,
+      payload
+     
+    }
+  }
