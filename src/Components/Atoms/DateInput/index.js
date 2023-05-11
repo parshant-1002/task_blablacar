@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 
 
-const DateInput = ({validationMessage="" ,startDate,setStartDate=()=>{},minDate,setValidationMessageDOB}) => {
+const DateInput = ({validationMessage="" ,startDate,setStartDate=()=>{},minDate,setValidationMessageDOB=()=>{}}) => {
  
   return (
     <div className='section-data'>
