@@ -15,16 +15,17 @@ export default function EditPersonalDetails({ show, setShow = () => { } }) {
     const userData = JSON.parse(localStorage.getItem("CurrentUser"))
     const [firstName, setFirstName] = useState(userData?.first_name || "")
     const [lastName, setLastName] = useState(userData?.last_name || "")
-    const [dob, setDob] = useState(new Date(userData?.dob || ""))
+    const [dob, setDob] = useState(new Date(userData?.dob || "0"))
     const [gender, SetGender] = useState(userData?.title || "")
     const [email, setEmail] = useState(userData?.email || "")
     const [emailValidationMessage, setEmailValidationMessage] = useState("")
     const [validationMessageFirstName, setValidationMessageFirstName] = useState()
     const [validationMessageLastName, setValidationMessageLastName] = useState()
     const [validationMessageDOB, setValidationMessageDOB] = useState()
+    const [validationMessageGender, setValidationMessageGender] = useState()
     const  navigate=useNavigate()
     const dispatch = useDispatch()
-    console.log(dob,"vvshfd")
+    console.log(!dob?.toLocaleDateString()  ,"vvshfd")
     const handleSubmit = () => {
         if (!email.trim()) {
             setEmailValidationMessage(VALIDATION_MESSAGES?.EMAIL?.EMPTY)
@@ -38,8 +39,11 @@ export default function EditPersonalDetails({ show, setShow = () => { } }) {
         if (!lastName.trim()) {
             setValidationMessageLastName(VALIDATION_MESSAGES?.LAST_NAME?.EMPTY)
         }
-       if(dob==null){
-        setValidationMessageLastName(VALIDATION_MESSAGES?.DATE?.EMPTY)
+       if(!dob?.toLocaleDateString()){
+        setValidationMessageDOB(VALIDATION_MESSAGES?.DATE?.EMPTY)
+       }
+       if(!gender){
+        setValidationMessageGender("Enter Valid Gender")
        }
         if (!lastName.trim()) {
             setValidationMessageLastName(VALIDATION_MESSAGES?.LAST_NAME?.EMPTY)
@@ -57,7 +61,7 @@ export default function EditPersonalDetails({ show, setShow = () => { } }) {
             myData.email=email
             myData.first_name=firstName
             myData.last_name=lastName
-            myData.dob=dob.toLocaleString().split(",")[0]
+            myData.dob=dob&&dob?.toLocaleString().split(",")[0]
             myData.title=gender
             localStorage.setItem("CurrentUser",JSON.stringify(myData))
             dispatch(updateProfile({ email: email, first_name: firstName, last_name: lastName, dob: dob.toLocaleString().split(",")[0], title: gender }))
@@ -83,12 +87,13 @@ export default function EditPersonalDetails({ show, setShow = () => { } }) {
             <div className='FillingMessageDiv'>
                 <span className='FillingMessage'>Gender</span>
             </div>
-            <CustomInput state={gender} setState={SetGender} />
-
+            <CustomInput state={gender} setState={SetGender} validationMessage={validationMessageGender} setValidationMessage={setValidationMessageGender} placeHolder='gender' />
+            <ValidationText message={   validationMessageGender} />
+         
             <div className='FillingMessageDiv'>
                 <span className='FillingMessage'>Date of Birth</span>
             </div>
-            <DateInput startDate={dob} setStartDate={setDob} />
+            <DateInput startDate={dob} setStartDate={setDob}  setValidationMessageDOB={setValidationMessageDOB}/>
             <ValidationText message={validationMessageDOB} />
             <div className='FillingMessageDiv'>
                 <span className='FillingMessage'>Email Address</span>
