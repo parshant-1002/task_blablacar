@@ -15,6 +15,7 @@ import PassangersCanBookInstantly from "../Components/Cells/PassangersCanBookIns
 import SetPrice from "../Components/Cells/SetPrice";
 import DeleteAccount from "../Components/Molecules/Profile/AccountView/DeleteAccount";
 import AboutRide from "../Components/Cells/AboutRide";
+import YourRides from "../Components/Molecules/YourRides";
 
 export const PRIVATE_ROUTES = [
   {
@@ -86,6 +87,10 @@ export const PRIVATE_ROUTES = [
   {
     path: "/offer-seats/comment",
     component: <AboutRide />,
+  },
+  {
+    path: "/rides",
+    component: <YourRides/>,
   }
 
   

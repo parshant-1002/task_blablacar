@@ -18,6 +18,7 @@ export default function RideTime() {
       setVelidationMessage(VALIDATION_MESSAGES.TIME.EMPTY)
      }
      else{
+      console.log(selectedDateTime.toLocaleTimeString())
    dispatch(addRideTime(selectedDateTime.toLocaleTimeString()))
    navigate("/offer-seats/comfort")
      }

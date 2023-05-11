@@ -204,3 +204,13 @@ export const deleteAccount = (successDeleteAccount,failedDeleteAccount) => {
    
   }
 }
+
+export const getPublishRides = (successGet,failedGet) => {
+
+  return {
+    type: ACTION_STATES.GET_PUBLISHED_RIDES,
+    successGet,
+    failedGet
+   
+  }
+}

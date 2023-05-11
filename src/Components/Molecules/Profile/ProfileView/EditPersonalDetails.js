@@ -21,8 +21,10 @@ export default function EditPersonalDetails({ show, setShow = () => { } }) {
     const [emailValidationMessage, setEmailValidationMessage] = useState("")
     const [validationMessageFirstName, setValidationMessageFirstName] = useState()
     const [validationMessageLastName, setValidationMessageLastName] = useState()
+    const [validationMessageDOB, setValidationMessageDOB] = useState()
     const  navigate=useNavigate()
     const dispatch = useDispatch()
+    console.log(dob,"vvshfd")
     const handleSubmit = () => {
         if (!email.trim()) {
             setEmailValidationMessage(VALIDATION_MESSAGES?.EMAIL?.EMPTY)
@@ -36,6 +38,13 @@ export default function EditPersonalDetails({ show, setShow = () => { } }) {
         if (!lastName.trim()) {
             setValidationMessageLastName(VALIDATION_MESSAGES?.LAST_NAME?.EMPTY)
         }
+       if(dob==null){
+        setValidationMessageLastName(VALIDATION_MESSAGES?.DATE?.EMPTY)
+       }
+        if (!lastName.trim()) {
+            setValidationMessageLastName(VALIDATION_MESSAGES?.LAST_NAME?.EMPTY)
+        }
+
 
         else if (!isValidName.test(firstName)) {
             setValidationMessageFirstName(VALIDATION_MESSAGES?.FIRST_NAME?.NOT_VALID)
@@ -80,6 +89,7 @@ export default function EditPersonalDetails({ show, setShow = () => { } }) {
                 <span className='FillingMessage'>Date of Birth</span>
             </div>
             <DateInput startDate={dob} setStartDate={setDob} />
+            <ValidationText message={validationMessageDOB} />
             <div className='FillingMessageDiv'>
                 <span className='FillingMessage'>Email Address</span>
             </div>

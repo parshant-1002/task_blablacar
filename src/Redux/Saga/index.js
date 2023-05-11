@@ -300,10 +300,55 @@ function* deleteUserAccount(payload) {
         yield put(settingLoaderState(false))
     } catch (error) {
         yield put(settingLoaderState(false))
-        console.log(error, "error in sending email verification",payload)
+        console.log(error, "error in sending email verification", payload)
         payload?.failedDeleteAccount(error?.response?.data)
     }
 }
+
+function* publishRideData(payload) {
+    try {
+        console.log("publishride")
+        const token = localStorage.getItem("token")
+        const config = {
+            headers: { 'Authorization': token }
+        };
+        yield put(settingLoaderState(true))
+        const res = yield axios.post(
+            BASE_URL + URL_EXTENSIONS.PUBLISH_RIDE,payload?.payload, config
+        );
+        console.log(res?.data, "publishRide")
+        payload?.successPublishRide()
+        yield put(setUserDetails(res?.data?.status?.data))
+        yield put(settingLoaderState(false))
+    } catch (error) {
+        yield put(settingLoaderState(false))
+        console.log(error, "error in publish ride", payload)
+        payload?.failedPublishRide(error?.response?.data)
+    }
+}
+function* getPublishRidesData(payload) {
+    try {
+       
+        const token = localStorage.getItem("token")
+        const config = {
+            headers: { 'Authorization': token }
+        };
+        yield put(settingLoaderState(true))
+        const res = yield axios.get(
+            BASE_URL + URL_EXTENSIONS.PUBLISH_RIDE, config
+        );
+     
+        payload?.successGet(res?.data)
+        yield put(setUserDetails(res?.data?.status?.data))
+        yield put(settingLoaderState(false))
+    } catch (error) {
+        yield put(settingLoaderState(false))
+        console.log(error, "error in getting ride", payload)
+        payload?.failedGet(error?.response?.data)
+    }
+}
+
+
 function* Saga() {
     yield all([
         takeLatest(ACTION_STATES.SIGN_UP, postRegisterData),
@@ -321,7 +366,9 @@ function* Saga() {
         takeLatest(ACTION_STATES.SEND_EMAIL_VERIFICATION_LINK, sendingEmailVerificationLink),
         takeLatest(ACTION_STATES.SEND_EMAIL_VERIFICATION_STATUS, sendingEmailVerificationStatus),
         takeLatest(ACTION_STATES.GETUSERDETAILS, updatedUserDetails),
-        takeLatest(ACTION_STATES.DELETE_ACCOUNT, deleteUserAccount)
+        takeLatest(ACTION_STATES.DELETE_ACCOUNT, deleteUserAccount),
+        takeLatest(ACTION_STATES.PUBLISH_RIDE,publishRideData),
+        takeLatest(ACTION_STATES.GET_PUBLISHED_RIDES,getPublishRidesData)
     ]);
 }
 export default Saga;

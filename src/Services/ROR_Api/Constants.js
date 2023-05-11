@@ -8,6 +8,7 @@ export const URL_EXTENSIONS={
     PROFILE_PIC:"/user_images",
     VEHICLE:"/vehicles",
     EMAIL_VERIFICATION:"/account_activations",
+    PUBLISH_RIDE:"/publishes"
 
 }
 

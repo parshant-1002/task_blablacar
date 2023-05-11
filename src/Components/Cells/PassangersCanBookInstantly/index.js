@@ -9,7 +9,7 @@ export default function PassangersCanBookInstantly() {
     
      const handleSelect=(selectedText)=>{
         if(selectedText===choiceArray[0]){
-    dispatch(needMiddleSeatEmpty("Instant"))
+    dispatch(bookRequestType("Instant"))
      }
      else{
         dispatch(bookRequestType("Not_Instant"))
