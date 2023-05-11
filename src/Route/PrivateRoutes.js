@@ -11,6 +11,10 @@ import DateOfRide from "../Components/Cells/DateOfRide";
 import RideTime from "../Components/Cells/RideTime";
 import OfferSeatConfortChoice from "../Components/Cells/OfferSeatConfortChoice";
 import NoOfPassangers from "../Components/Cells/NoOfPassangers";
+import PassangersCanBookInstantly from "../Components/Cells/PassangersCanBookInstantly";
+import SetPrice from "../Components/Cells/SetPrice";
+import DeleteAccount from "../Components/Molecules/Profile/AccountView/DeleteAccount";
+import AboutRide from "../Components/Cells/AboutRide";
 
 export const PRIVATE_ROUTES = [
   {
@@ -67,7 +71,22 @@ export const PRIVATE_ROUTES = [
     component: <NoOfPassangers />,
   },
   
-  
- 
+  {
+    path: "/offer-seats/request_approval",
+    component: <PassangersCanBookInstantly />,
+  },
+  {
+    path: "/offer-seats/price-recommendation",
+    component: <SetPrice />,
+  },
+  {
+    path: "/dashboard/profile/close",
+    component: <DeleteAccount />,
+  },
+  {
+    path: "/offer-seats/comment",
+    component: <AboutRide />,
+  }
+
   
 ];

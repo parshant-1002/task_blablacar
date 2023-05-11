@@ -40,3 +40,33 @@ export const setPickLocation = (payload) => {
      
     }
   }
+  export const needMiddleSeatEmpty = (payload) => {
+  
+    console.log("called")
+    return {
+      type: ACTION_STATES.NEED_MIDDLE_SEAT_EMPTY,
+      payload
+     
+    }
+  }
+  export const numberOfPassangers = (payload) => {
+    return {
+      type: ACTION_STATES.NUMBER_OF_PASSENGERS,
+      payload
+     
+    }
+  }
+  export const bookRequestType = (payload) => {
+    return {
+      type: ACTION_STATES.BOOK_REQUEST,
+      payload
+     
+    }
+  }
+  export const setPriceOfRide = (payload) => {
+    return {
+      type: ACTION_STATES.SET_PRICE_RIDE,
+      payload
+     
+    }
+  }

@@ -5,7 +5,11 @@ const initialStateForPublishRide = {
     dropOfLocation: {},
     selectedRouteData: {},
     rideStartDate: "",
-    rideStartTime:""
+    rideStartTime: "",
+    needMiddleSeatEmpty: false,
+    noOfPassangers: 0,
+    bookRequesttype:"",
+    price:""
 }
 export const publishRideReducer = (state = initialStateForPublishRide, action) => {
     switch (action?.type) {
@@ -25,10 +29,26 @@ export const publishRideReducer = (state = initialStateForPublishRide, action) =
             return {
                 ...state, rideStartDate: action?.payload
             }
-            case ACTION_STATES.ADD_RIDE_TIME:
+        case ACTION_STATES.ADD_RIDE_TIME:
             return {
                 ...state, rideStartTime: action?.payload
             }
+        case ACTION_STATES.NEED_MIDDLE_SEAT_EMPTY:
+            return {
+                ...state, needMiddleSeatEmpty: action?.payload
+            }
+        case ACTION_STATES.NUMBER_OF_PASSENGERS:
+            return {
+                ...state, noOfPassangers: action?.payload
+            }
+            case ACTION_STATES.BOOK_REQUEST:
+                return {
+                    ...state, bookRequesttype: action?.payload
+                }
+                case ACTION_STATES.SET_PRICE_RIDE:
+                    return {
+                        ...state, price: action?.payload
+                    }
         default:
             return state
     }

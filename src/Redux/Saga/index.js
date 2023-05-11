@@ -283,7 +283,27 @@ function* updatedUserDetails() {
     }
 }
 
+function* deleteUserAccount(payload) {
+    try {
 
+        const token = localStorage.getItem("token")
+        const config = {
+            headers: { 'Authorization': token }
+        };
+        yield put(settingLoaderState(true))
+        const res = yield axios.delete(
+            BASE_URL + URL_EXTENSIONS.SIGN_UP, config
+        );
+        console.log(res?.data, "accountdeleted")
+        payload?.successDeleteAccount()
+        yield put(setUserDetails(res?.data?.status?.data))
+        yield put(settingLoaderState(false))
+    } catch (error) {
+        yield put(settingLoaderState(false))
+        console.log(error, "error in sending email verification",payload)
+        payload?.failedDeleteAccount(error?.response?.data)
+    }
+}
 function* Saga() {
     yield all([
         takeLatest(ACTION_STATES.SIGN_UP, postRegisterData),
@@ -300,7 +320,8 @@ function* Saga() {
         takeLatest(ACTION_STATES.UPDATE_VEHICLE, updateVehicleDetails),
         takeLatest(ACTION_STATES.SEND_EMAIL_VERIFICATION_LINK, sendingEmailVerificationLink),
         takeLatest(ACTION_STATES.SEND_EMAIL_VERIFICATION_STATUS, sendingEmailVerificationStatus),
-        takeLatest(ACTION_STATES.GETUSERDETAILS, updatedUserDetails)
+        takeLatest(ACTION_STATES.GETUSERDETAILS, updatedUserDetails),
+        takeLatest(ACTION_STATES.DELETE_ACCOUNT, deleteUserAccount)
     ]);
 }
 export default Saga;

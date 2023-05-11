@@ -186,10 +186,21 @@ export const getUserDetails = () => {
 }
 
 export const setUserDetails = (payload) => {
-  console.log(payload,"in reducer")
+
   return {
     type: ACTION_STATES.SETUSERDETAILS,
     payload
+   
+  }
+}
+
+
+export const deleteAccount = (successDeleteAccount,failedDeleteAccount) => {
+
+  return {
+    type: ACTION_STATES.DELETE_ACCOUNT,
+    successDeleteAccount,
+    failedDeleteAccount
    
   }
 }
