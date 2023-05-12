@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import CustomChoiceSelector from '../CustomChoiceSelector'
+import CustomChoiceSelector from '../../../Cells/CustomChoiceSelector'
 import { useDispatch } from 'react-redux'
-import { bookRequestType, needMiddleSeatEmpty } from '../../../Redux/Actions/PublishRideAction'
+import { bookRequestType, needMiddleSeatEmpty } from '../../../../Redux/Actions/PublishRideAction'
 
 export default function PassangersCanBookInstantly() {
     const choiceArray=["Yes,sure!","No,I will reply to each request my self"]

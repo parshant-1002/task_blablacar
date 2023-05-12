@@ -296,7 +296,7 @@ function* deleteUserAccount(payload) {
         );
         console.log(res?.data, "accountdeleted")
         payload?.successDeleteAccount()
-        yield put(setUserDetails(res?.data?.status?.data))
+     
         yield put(settingLoaderState(false))
     } catch (error) {
         yield put(settingLoaderState(false))
@@ -318,7 +318,7 @@ function* publishRideData(payload) {
         );
         console.log(res?.data, "publishRide")
         payload?.successPublishRide()
-        yield put(setUserDetails(res?.data?.status?.data))
+      
         yield put(settingLoaderState(false))
     } catch (error) {
         yield put(settingLoaderState(false))
@@ -334,12 +334,40 @@ function* getPublishRidesData(payload) {
             headers: { 'Authorization': token }
         };
         yield put(settingLoaderState(true))
-        const res = yield axios.get(
+        const res = yield !payload?.id&&axios.get(
             BASE_URL + URL_EXTENSIONS.PUBLISH_RIDE, config
+           
         );
-     
-        payload?.successGet(res?.data)
-        yield put(setUserDetails(res?.data?.status?.data))
+        const res1 =  yield payload?.id&&axios.get(
+            BASE_URL + URL_EXTENSIONS.PUBLISH_RIDE+"/"+payload?.id, config
+           
+        );
+
+        payload?.successGet(res?.data||res1?.data)
+   
+        yield put(settingLoaderState(false))
+    } catch (error) {
+        yield put(settingLoaderState(false))
+        console.log(error, "error in getting ride", payload)
+        payload?.failedGet(error?.response?.data)
+    }
+}
+function* deleteRide(payload) {
+    try {
+       
+        const token = localStorage.getItem("token")
+        const config = {
+            headers: { 'Authorization': token }
+        };
+        yield put(settingLoaderState(true))
+      
+        const res1 =  yield axios.delete(
+            BASE_URL + URL_EXTENSIONS.PUBLISH_RIDE+"/"+payload?.id, config
+           
+        );
+
+        payload?.successGet()
+   
         yield put(settingLoaderState(false))
     } catch (error) {
         yield put(settingLoaderState(false))
@@ -368,7 +396,8 @@ function* Saga() {
         takeLatest(ACTION_STATES.GETUSERDETAILS, updatedUserDetails),
         takeLatest(ACTION_STATES.DELETE_ACCOUNT, deleteUserAccount),
         takeLatest(ACTION_STATES.PUBLISH_RIDE,publishRideData),
-        takeLatest(ACTION_STATES.GET_PUBLISHED_RIDES,getPublishRidesData)
+        takeLatest(ACTION_STATES.GET_PUBLISHED_RIDES,getPublishRidesData),
+        takeLatest(ACTION_STATES.DELETE_RIDE,deleteRide)
     ]);
 }
 export default Saga;

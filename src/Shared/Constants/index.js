@@ -106,5 +106,21 @@ export const LOCALSTORAGE_KEY_NAME="token"
 
 export const BUTTONTEXT={
     PUBLISH_RIDE:"Publish Ride",
-    CONTINUE:"Continue"
+    CONTINUE:"Continue",
+    DELETE:"Delete"
+}
+
+export const MONTHS={
+    1:"Jan",
+    2:"Feb",
+    3:"Mar",
+    4:"Apr",
+    5:"May",
+    6:"Jun",
+    7:"Jul",
+    8:"Aug",
+    9:"Sep",
+    10:"Oct",
+    11:"Nov",
+    12:"Dec"
 }

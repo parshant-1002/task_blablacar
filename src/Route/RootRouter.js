@@ -6,6 +6,7 @@ import {  Routes, Route } from "react-router-dom";
 import { AUTH_ROUTES } from "./AuthRoutes";
 import { PUBLIC_ROUTES } from "./PublicRoute";
 import { PRIVATE_ROUTES } from "./PrivateRoutes";
+import Navbar from "../View/Navbar.js";
 
 
 
@@ -49,7 +50,7 @@ const RootRouter = () => {
   return (
   
   <>
-
+   <Navbar />
     {token ? (
              <AuthenticatedRoutes />
       ) : (

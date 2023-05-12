@@ -78,3 +78,11 @@ export const setPickLocation = (payload) => {
       ,successPublishRide,failedPublishRide
     }
   }
+  // export const publishRide = (payload,successPublishRide,failedPublishRide) => {
+   
+  //   return {
+  //     type: ACTION_STATES.PUBLISH_RIDE,
+  //     payload
+  //     ,successPublishRide,failedPublishRide
+  //   }
+  // }

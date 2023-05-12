@@ -7,16 +7,16 @@ import Loader from './Components/Atoms/Loader';
 import RootRouter from './Route/RootRouter';
 
 function App() {
-const data=useSelector(state=>state)
-console.log(data,"data")
+  const data = useSelector(state => state)
+  console.log(data, "data")
   return (
     <div className="App">
       <BrowserRouter>
-      <Loader show={useSelector(state=>state?.loaderStateReducer)}/>
-        <Navbar />
+        <Loader show={useSelector(state => state?.loaderStateReducer)} />
+     
         <div className='main'>
           {/* <PublicRoutes /> */}
-          <RootRouter/>
+          <RootRouter />
         </div>
       </BrowserRouter>
     </div>

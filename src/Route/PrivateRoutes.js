@@ -3,27 +3,28 @@ import PickupFromMap from "../Components/Molecules/SelectLocationFromMap";
 import Profile from "../Components/Molecules/Profile";
 import AddVehicleDetails from "../Components/Molecules/Profile/ProfileView/AddVehicle";
 import EditOrDeleteVehicle from "../Components/Molecules/Profile/ProfileView/AddVehicle/EditorDeleteVehicle";
-import DropOf from "../Components/Molecules/Publish ride/DropOf";
-import Pickup from "../Components/Molecules/Publish ride/Pickup";
-import SelectRoute from "../Components/Molecules/Publish ride/SelectRoute/SelectRoute";
+import DropOf from "../Components/Molecules/PublishRide/DropOf";
+import Pickup from "../Components/Molecules/PublishRide/Pickup";
+import SelectRoute from "../Components/Molecules/PublishRide/SelectRoute/SelectRoute";
 import AddStop from "../Components/Cells/AddStop.js";
-import DateOfRide from "../Components/Cells/DateOfRide";
-import RideTime from "../Components/Cells/RideTime";
-import OfferSeatConfortChoice from "../Components/Cells/OfferSeatConfortChoice";
-import NoOfPassangers from "../Components/Cells/NoOfPassangers";
-import PassangersCanBookInstantly from "../Components/Cells/PassangersCanBookInstantly";
-import SetPrice from "../Components/Cells/SetPrice";
+import DateOfRide from "../Components/Molecules/PublishRide/DateOfRide";
+import RideTime from "../Components/Molecules/PublishRide/RideTime";
+import OfferSeatConfortChoice from "../Components/Molecules/PublishRide/OfferSeatConfortChoice";
+import NoOfPassangers from "../Components/Molecules/PublishRide/NoOfPassangers";
+import PassangersCanBookInstantly from "../Components/Molecules/PublishRide/PassangersCanBookInstantly";
+import SetPrice from "../Components/Molecules/PublishRide/SetPrice";
 import DeleteAccount from "../Components/Molecules/Profile/AccountView/DeleteAccount";
-import AboutRide from "../Components/Cells/AboutRide";
-import YourRides from "../Components/Molecules/YourRides";
+import AboutRide from "../Components/Molecules/PublishRide/AboutRide";
+import YourRides from "../Components/Molecules/PublishRide/YourRides";
+import RideDetails from "../Components/Molecules/PublishRide/YourRides/RideDetails";
+import DetailsOfCurrentUsers from "../Components/Molecules/Profile/ProfileView/DetailsOfCurrentUsers";
 
 export const PRIVATE_ROUTES = [
   {
     path: "/dashboard/profile/menu",
     component: <Profile />,
   },
- 
-  {
+   {
     path: "/dashboard/profile/picture",
     component: <AddOrEditProfilePic />,
   },
@@ -91,7 +92,17 @@ export const PRIVATE_ROUTES = [
   {
     path: "/rides",
     component: <YourRides/>,
+  },
+  {
+    path: "/rides/offer/:id",
+    component: <RideDetails/>,
+  },
+  
+  {
+    path: "/user/show",
+    component: <DetailsOfCurrentUsers/>,
   }
 
-  
+
+
 ];

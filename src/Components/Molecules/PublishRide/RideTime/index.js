@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
-import Header from '../../Atoms/Header'
-import { BUTTONTEXT, STRINGS, VALIDATION_MESSAGES } from '../../../Shared/Constants'
+import Header from '../../../Atoms/Header'
+import { BUTTONTEXT, STRINGS, VALIDATION_MESSAGES } from '../../../../Shared/Constants'
 import ReactDatePicker from 'react-datepicker';
 import "./styles.css"
-import ContinueButton from '../../Atoms/ContinueButton';
+import ContinueButton from '../../../Atoms/ContinueButton';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import ValidationText from '../../Atoms/ValidationText';
-import { addRideTime } from '../../../Redux/Actions/PublishRideAction';
+import ValidationText from '../../../Atoms/ValidationText';
+import { addRideTime } from '../../../../Redux/Actions/PublishRideAction';
 export default function RideTime() {
     const [selectedDateTime, setSelectedDateTime] = useState(new Date());
     const [validationMessage, setVelidationMessage] = useState("");

@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
-import Header from '../../Atoms/Header'
-import { Images } from '../../../Shared/Images'
+import Header from '../../../Atoms/Header'
+import { Images } from '../../../../Shared/Images'
 import "./styles.css"
-import ContinueButton from '../../Atoms/ContinueButton'
-import { BUTTONTEXT } from '../../../Shared/Constants'
+import ContinueButton from '../../../Atoms/ContinueButton'
+import { BUTTONTEXT } from '../../../../Shared/Constants'
 import { useDispatch } from 'react-redux'
-import { numberOfPassangers } from '../../../Redux/Actions/PublishRideAction'
+import { numberOfPassangers } from '../../../../Redux/Actions/PublishRideAction'
 import { useNavigate } from 'react-router-dom'
-import Counter from '../../Atoms/Counter'
+import Counter from '../../../Atoms/Counter'
 export default function NoOfPassangers() {
     const [noOfPassangers,setNoOfPassangers]=useState(1)
     const dispatch=useDispatch()

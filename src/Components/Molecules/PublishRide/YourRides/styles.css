@@ -32,3 +32,14 @@
     margin :10px;
 
 }
+.ridesLink{
+        
+ 
+    text-decoration: none;
+}
+.deleteRide{
+    
+    background-color: rgba(5, 71, 82, 0.95);;
+    height:100vh;
+    display: block;
+}

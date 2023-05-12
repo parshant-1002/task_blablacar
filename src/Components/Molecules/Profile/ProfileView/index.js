@@ -6,6 +6,7 @@ import PathTo from '../../../Atoms/PathTo'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserDetails, getVehicleData} from '../../../../Redux/Actions'
+import { Images } from '../../../../Shared/Images'
 
 export default function NameAndProfilePicView({ setShowEditPersonalDetails = () => { }, setShowMiniBio = () => { },setShowEmailVerificationModal }) {
     
@@ -24,7 +25,7 @@ export default function NameAndProfilePicView({ setShowEditPersonalDetails = () 
     return (
         <div className='profile'>
             <div className='profileMain'>
-                <CustomLinkListCreator pic={true} profileViewLink={true} linkText={userData?.first_name} handleSelect={handleSelect} profilePic={StoreData?.profilePicReducer} />
+                <CustomLinkListCreator pic={true} profileViewLink={true} linkText={userData?.first_name} handleSelect={handleSelect} profilePic={StoreData?.profilePicReducer} route="/user/show"/>
                 <Linkto linkText='Add profile picture' route="/dashboard/profile/picture" />
                 <PathTo linkText='Edit Personal Details' picNeeded={false} setShow={setShowEditPersonalDetails} />
             </div>
@@ -39,13 +40,15 @@ export default function NameAndProfilePicView({ setShowEditPersonalDetails = () 
             <div className='profileMain'>
                 <h1 className='headingData'>About You</h1>
                 <PathTo linkText='Add a mini bio' setShow={setShowMiniBio} />
-                {console.log(currentUser)}
-                <label>BIO : {currentUser?.currentUser?.bio}</label>
+               <div className='bio'>
+
+                <label className='userBioData'> <img className='bioPic' src={Images?.bio} alt=""></img> {currentUser?.currentUser?.bio||"I’m chatty when I feel comfortable"}</label>
+               </div>
             </div>
             <div className='profileMain'>
                 <h1 className='headingData'>Vehicles</h1>
-
-                {Object.values(StoreData?.vehicleDataReducer)?.map(val =>
+                  {console.log(StoreData?.vehicleDataReducer,"ghdffh")}
+                {(StoreData?.vehicleDataReducer)?.map(val =>
                     <div>
                         <CustomLinkListCreator
                             linkText={

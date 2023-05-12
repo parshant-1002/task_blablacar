@@ -1,8 +1,6 @@
 
-import PassangersCanBookInstantly from "../Components/Cells/PassangersCanBookInstantly";
-import SetPrice from "../Components/Cells/SetPrice";
 import VerifyEmail from "../Components/Cells/VerifyEmail";
-import PublishRide from "../Components/Molecules/Publish ride";
+import PublishRide from "../Components/Molecules/PublishRide";
 import Search from "../Components/Molecules/Search";
 import Home from "../View/Home";
 

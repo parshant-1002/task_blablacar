@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import Header from '../../Atoms/Header'
-import ContinueButton from '../../Atoms/ContinueButton'
+import Header from '../../../Atoms/Header'
+import ContinueButton from '../../../Atoms/ContinueButton'
 import "./styles.css"
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { publishRide } from '../../../Redux/Actions/PublishRideAction'
-import ValidationText from '../../Atoms/ValidationText'
+import { publishRide } from '../../../../Redux/Actions/PublishRideAction'
+import ValidationText from '../../../Atoms/ValidationText'
 export default function AboutRide() {
     const [aboutRide,setAboutRide]=useState("")
     const [validationMessage,setValidationMessage]=useState("")

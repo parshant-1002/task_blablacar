@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import CustomChoiceSelector from '../CustomChoiceSelector'
+import CustomChoiceSelector from '../../../Cells/CustomChoiceSelector'
 import { useDispatch } from 'react-redux'
-import { needMiddleSeatEmpty } from '../../../Redux/Actions/PublishRideAction'
+import { needMiddleSeatEmpty } from '../../../../Redux/Actions/PublishRideAction'
 
 export default function OfferSeatConfortChoice() {
     const choiceArray=["Yes,sure!","No,I will sequeeze in 3"]

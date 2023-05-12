@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import Header from '../../Atoms/Header'
+import Header from '../../../Atoms/Header'
 import { useDispatch, useSelector } from 'react-redux'
-import Counter from '../../Atoms/Counter'
-import ContinueButton from '../../Atoms/ContinueButton'
-import { BUTTONTEXT } from '../../../Shared/Constants'
+import Counter from '../../../Atoms/Counter'
+import ContinueButton from '../../../Atoms/ContinueButton'
+import { BUTTONTEXT } from '../../../../Shared/Constants'
 import { useNavigate } from 'react-router-dom'
-import { setPriceOfRide } from '../../../Redux/Actions/PublishRideAction'
+import { setPriceOfRide } from '../../../../Redux/Actions/PublishRideAction'
 
 export default function SetPrice() {
 const distance=useSelector(state=>state?.publishRideReducer?.selectedRouteData?.distance)?.split(" ")[0]

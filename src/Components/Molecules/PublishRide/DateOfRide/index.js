@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import Header from '../../Atoms/Header'
-import { BUTTONTEXT, STRINGS, VALIDATION_MESSAGES } from '../../../Shared/Constants'
-import DateInput from '../../Atoms/DateInput'
-import ContinueButton from '../../Atoms/ContinueButton'
+import Header from '../../../Atoms/Header'
+import { BUTTONTEXT, STRINGS, VALIDATION_MESSAGES } from '../../../../Shared/Constants'
+import DateInput from '../../../Atoms/DateInput'
+import ContinueButton from '../../../Atoms/ContinueButton'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { addRideDate } from '../../../Redux/Actions/PublishRideAction'
+import { addRideDate } from '../../../../Redux/Actions/PublishRideAction'
 
 export default function DateOfRide() {
     const [dateOfRide,setDateOfRide]=useState(new Date())

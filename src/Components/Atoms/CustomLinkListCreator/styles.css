@@ -99,15 +99,16 @@
 }
 
 .profilePicDiv {
-  height: fit-content;;
+
 
     position: relative;
     border: solid;
-    border-radius: 9999px;
+    border-radius: 50%;
     border-color: white;
     position: absolute;
     right: 10%;
-
+    height: 70%;
+    width: 18%;
 }
 
 .profilelinkTo:hover {
@@ -119,10 +120,10 @@
 }
 
 .profilePic {
-    border-radius: 9999px;
-  
-    width: 120px;
-    height: 120px;
+    border-radius: 50%;
+
+    height: 100%;
+    width: 100%;
     /* object-fit: contain; */
 
 }
