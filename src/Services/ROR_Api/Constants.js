@@ -1,4 +1,4 @@
-export const BASE_URL="https://0499-112-196-113-2.ngrok-free.app"
+export const BASE_URL="https://4cb9-112-196-113-2.ngrok-free.app"
 
 
 export const URL_EXTENSIONS={
@@ -8,8 +8,7 @@ export const URL_EXTENSIONS={
     PROFILE_PIC:"/user_images",
     VEHICLE:"/vehicles",
     EMAIL_VERIFICATION:"/account_activations",
-    PUBLISH_RIDE:"/publishes"
-
+    PUBLISH_RIDE:"/publishes", 
 }
 
 export const MAP_API_KEY="AIzaSyDUzn63K64-sXadyIwRJExCfMaicagwGq4"

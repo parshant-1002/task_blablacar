@@ -10,7 +10,7 @@ export default function CustomInput(
     handleSubmit = () => { },
     setValidationMessage = () => { },
     inputType = "",
-    inputId,
+    inputId="",
     showEyePicture = false,
     setInputType = () => { } ,
     handleChange = (value) => {
