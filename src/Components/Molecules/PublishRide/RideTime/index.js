@@ -26,10 +26,8 @@ export default function RideTime() {
   return (
     <>
         <Header heading={STRINGS.ON_WHAT_TIME}/>
-        
-           
+            
       <div className='RideTimePicker'>
-
       <ReactDatePicker
         id="myDateTimePicker"
         selected={selectedDateTime}
@@ -37,16 +35,13 @@ export default function RideTime() {
         onChange={(date) =>setSelectedDateTime(date)}
         showTimeSelect
         showTimeSelectOnly
-        
-        timeIntervals={10}
+                timeIntervals={10}
         dateFormat=" h:mm aa"
         
         />
         </div>
         <ValidationText message={validationMessage}/>
         <ContinueButton ButtonText={BUTTONTEXT.CONTINUE} handleSubmit={handleSubmit}/>
-    
-
-    </>
+        </>
   )
 }

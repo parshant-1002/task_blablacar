@@ -6,10 +6,8 @@ import "./styles.css"
 export default function Search() {
   return (
     <div>
-        
-        <Header heading={STRINGS?.SEARCH_HEADING}></Header>
-               <SelectTrip/>
-        
+      <Header heading={STRINGS?.SEARCH_HEADING}></Header>
+      <SelectTrip />
     </div>
   )
 }

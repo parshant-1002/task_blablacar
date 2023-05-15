@@ -12,7 +12,7 @@ import closeEye from "../../assets/closeEye.png"
 import openEye from "../../assets/openEye.png"
 import substractionIcon from "../../assets/substraction.svg"
 import bio from "../../assets/bio.svg"
-export  const Images={
+export const Images = {
     rightArrow,
     blablacarLogo,
     homeBackground,
@@ -24,7 +24,8 @@ export  const Images={
     userProfileIcon,
     additionIcon,
     openEye,
-    closeEye,substractionIcon
-    ,bio
+    closeEye,
+    substractionIcon,
+    bio
 }
 

@@ -17,8 +17,7 @@ export default function DateOfRide() {
             setValidationMessage(VALIDATION_MESSAGES.DATE.EMPTY)  
         }
         else{
-
-          
+         
             dispatch(addRideDate(dateOfRide.toLocaleDateString())  )
             navigate("/offer-seats/departure-date/time")
         }

@@ -14,11 +14,8 @@ export default function PickupFromMap() {
     const [location, setLocation] = useState()
     const [showButton, setShowButton] = useState(false)
     const navigate = useNavigate()
-
-
     const dispatch = useDispatch()
     const handleSubmit = () => {
-
         if (type === "pickUp") {
             navigate("/offer-seats/arrival")
             dispatch(setPickLocation(location))

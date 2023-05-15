@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { publishRide } from '../../../../Redux/Actions/PublishRideAction'
 import ValidationText from '../../../Atoms/ValidationText'
+import { BUTTONTEXT, STRINGS } from '../../../../Shared/Constants'
 export default function AboutRide() {
     const [aboutRide,setAboutRide]=useState("")
     const [validationMessage,setValidationMessage]=useState("")
@@ -16,7 +17,7 @@ export default function AboutRide() {
         destination_longitude: data?.dropOfLocation?.longitude,
         destination_latitude:data?.dropOfLocation?.latitude,
         source_longitude: data?.pickUpLocation?.longitude,
-        source_longitude: data?.pickUpLocation?.longitude,
+        source_latitude: data?.pickUpLocation?.latitude,
         passengers_count:data?.noOfPassangers,
         date:data?.rideStartDate,
         time:data?.rideStartTime,
@@ -52,11 +53,11 @@ export default function AboutRide() {
     }
   return (
     <div>
-        <Header heading={"Anything to add about your ride?"}/>
+        <Header heading={STRINGS?.ABOUT_RIDE}/>
         
         <textarea className='aboutRide' value={aboutRide} onChange={(e)=>setAboutRide(e.target.value)}/>
         <ValidationText message={validationMessage}/>
-        <ContinueButton ButtonText='Publish Ride' handleSubmit={handleSubmit}/>
+        <ContinueButton ButtonText={BUTTONTEXT?.PUBLISH_RIDE} handleSubmit={handleSubmit}/>
     </div>
   )
 }

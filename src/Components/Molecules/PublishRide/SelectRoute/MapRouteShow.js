@@ -15,17 +15,14 @@ const MapRouteShow = ({ coordinates, setPaths }) => {
   const navigate = useNavigate()
   const origin = { lat: coordinates?.pickUpLocation?.latitude, lng: coordinates?.pickUpLocation?.longitude }
   const destination = { lat: coordinates?.dropOfLocation?.latitude, lng: coordinates?.dropOfLocation?.longitude }
-
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: MAP_API_KEY,
   });
-
   useEffect(() => {
     if (!origin?.lat) {
       navigate("/offer-seats/departure")
     }
-
   }, [])
 
   const directionsCallback = (response, status) => {
@@ -35,7 +32,7 @@ const MapRouteShow = ({ coordinates, setPaths }) => {
         path: response?.routes[0]?.summary,
         distance: response.routes[0].legs[0].distance.text,
         duration: response.routes[0].legs[0].duration.text,
-        directions:response
+        directions: response
       }]);
       setDistances(distances => [...distances, response.routes[0].legs[0].distance.text]);
     }
@@ -43,15 +40,10 @@ const MapRouteShow = ({ coordinates, setPaths }) => {
 
   const onLoad = map => {
     const directionsService = new window.google.maps.DirectionsService();
-
- 
     const directionsArray = [
-      { origin, destination,provideRouteAlternatives: true, avoidTolls: false },
-      { origin, destination, provideRouteAlternatives: true,avoidTolls: true },
-
+      { origin, destination, provideRouteAlternatives: true, avoidTolls: false },
+      { origin, destination, provideRouteAlternatives: true, avoidTolls: true },
     ];
-
-
     directionsArray.forEach(directions => {
       directionsService.route(
         {
@@ -62,14 +54,9 @@ const MapRouteShow = ({ coordinates, setPaths }) => {
       );
     });
   };
-
   const onUnmount = () => {
     setMap(null);
   };
-
-
-
-
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
@@ -81,15 +68,15 @@ const MapRouteShow = ({ coordinates, setPaths }) => {
         mapTypeId: 'roadmap'
       }}
     >
-{console.log(directions)}
-{directions?.length>1&&directions.map((direction, index) => (
+
+      {directions?.length > 1 && directions.map((direction, index) => (
         <DirectionsRenderer
           key={index}
           directions={direction}
           options={{
             map: map,
             polylineOptions: {
-              strokeColor: !direction?.request?.avoidTolls ?   'grey':'#00BFFF',
+              strokeColor: !direction?.request?.avoidTolls ? 'grey' : '#00BFFF',
               strokeOpacity: 1,
               strokeWeight: 6,
             },
@@ -99,9 +86,7 @@ const MapRouteShow = ({ coordinates, setPaths }) => {
           }}
         />
       ))}
-   
-   
-   
+
     </GoogleMap>
   ) : (
     <></>

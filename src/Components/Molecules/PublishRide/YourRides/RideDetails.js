@@ -7,6 +7,7 @@ import Header from '../../../Atoms/Header'
 import Linkto from '../../../Atoms/LinkTo'
 import PathTo from '../../../Atoms/PathTo'
 import CancleRide from './CancleRide'
+import { STRINGS } from '../../../../Shared/Constants'
 
 export default function RideDetails() {
     const { id } = useParams()
@@ -26,7 +27,7 @@ export default function RideDetails() {
     }, [])
     return (
         <div>
-            <Header heading="Ride Plan" />
+            <Header heading={STRINGS.RIDE_PLAN} />
             <div className='section-content'>
                 {ride.map(val =>
                     <>

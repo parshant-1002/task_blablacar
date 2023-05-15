@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import CustomChoiceSelector from '../../../Cells/CustomChoiceSelector'
 import { useDispatch } from 'react-redux'
 import { bookRequestType, needMiddleSeatEmpty } from '../../../../Redux/Actions/PublishRideAction'
+import { STRINGS } from '../../../../Shared/Constants'
 
 export default function PassangersCanBookInstantly() {
     const choiceArray=["Yes,sure!","No,I will reply to each request my self"]
@@ -17,7 +18,7 @@ export default function PassangersCanBookInstantly() {
   return (
     <div >
         
-        <CustomChoiceSelector heading="Can passengers book instantly?" choiceArray={choiceArray} route="/offer-seats/price-recommendation" handleSelect={handleSelect}/>
+        <CustomChoiceSelector heading={STRINGS?.BOOK_INSTANT} choiceArray={choiceArray} route="/offer-seats/price-recommendation" handleSelect={handleSelect}/>
     </div>
   )
 }
