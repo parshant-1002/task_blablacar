@@ -8,6 +8,7 @@ import axios from 'axios'
 import { MAP_API_KEY } from '../../../Services/ROR_Api/Constants'
 import GetCities from '../../Cells/GetCities'
 
+
 export default function Pickup() {
     const [pickupLocation,setPickupLocation]=useState()
     const [city,setCity]=useState([])
@@ -21,6 +22,7 @@ export default function Pickup() {
         <GetCities searchedLocation={pickupLocation} city={city} coordinates={coordinates} setSearchedLocation={setPickupLocation} setCity={setCity} setCoordinates={setCoordinates}/>
         {city.length?<CustomLinkListCreator linkText={city[0]} route={`/offer-seats/departure/precise/${JSON.stringify(coordinates)}/${"pickUp"}`} />:null}
         {/* <GeocodingComponent/> */}
+      {/* <AutoComplete/> */}
     </div> 
   )
 }

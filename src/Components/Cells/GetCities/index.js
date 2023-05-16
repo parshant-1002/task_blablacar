@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CustomInput from '../../Atoms/CustomInput'
 import Header from '../../Atoms/Header'
 import { STRINGS } from '../../../Shared/Constants'
@@ -6,11 +6,8 @@ import CustomLinkListCreator from '../../Atoms/CustomLinkListCreator'
 import axios from 'axios'
 import { MAP_API_KEY } from '../../../Services/ROR_Api/Constants'
 
-export default function GetCities({searchedLocation,setSearchedLocation=()=>{},setCity=()=>{},setCoordinates=()=>{}}) {
+export default function GetCities({searchedLocation,setSearchedLocation=()=>{},setCity=()=>{},setCoordinates=()=>{},customInputNeeded=true}) {
     
-
-
-
 
     const getCities = async (query) => {
       try {
@@ -30,14 +27,21 @@ export default function GetCities({searchedLocation,setSearchedLocation=()=>{},s
         console.error(error);
       }
     };
+    useEffect(()=>{
+      const time=setTimeout(()=>{ getCities(searchedLocation)},1000)
+      return()=>{
+        clearTimeout(time);
+      }
+    },[searchedLocation])
+
     const handleChange=(value)=>{
 
         setSearchedLocation(value)
-        getCities(value)
+        
     }
   return (
     <div className='section-content'>
-             <CustomInput placeHolder=' Enter the full address' type={"text"} state={searchedLocation} setState={setSearchedLocation} handleChange={handleChange}/>
+             {customInputNeeded&&<CustomInput placeHolder=' Enter the full address' type={"text"} state={searchedLocation} setState={setSearchedLocation} handleChange={handleChange}/>}
         </div> 
   )
 }
